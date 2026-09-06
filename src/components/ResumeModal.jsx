@@ -56,8 +56,9 @@ export const ResumeModal = ({ isOpen, onClose }) => {
                 <MapPin className="w-3.5 h-3.5" /> Madurai, Tamil Nadu, India
               </span>
               <span className="flex items-center gap-1">
-                <Mail className="w-3.5 h-3.5" /> siddharthk@student.tce.edu
+                <Mail className="w-3.5 h-3.5" /> personalsiddharth387@gmail.com
               </span>
+
               <a
                 href="https://github.com/siddharth387-debug"
                 target="_blank"

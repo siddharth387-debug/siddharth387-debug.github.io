@@ -3,8 +3,9 @@ export const portfolioData = {
     name: "Siddharth K",
     title: "AI-Assisted Web Developer",
     location: "Madurai, Tamil Nadu, India",
-    email: "siddharthk@student.tce.edu",
+    email: "personalsiddharth387@gmail.com",
     github: "https://github.com/siddharth387-debug",
+
     linkedin: "https://www.linkedin.com/in/siddharth-k-webdev/", // Replace with exact LinkedIn URL if needed
     status: "Open to opportunities",
     supportingStatement:
