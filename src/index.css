@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-primary: #090d12;
+    --bg-card: #12171f;
+    --bg-card-hover: #18202b;
+    --border-subtle: #222b38;
+    --border-hover: #334155;
+    --text-primary: #f0f6fc;
+    --text-muted: #8b949e;
+    --accent-blue: #38bdf8;
+    --accent-glow: rgba(56, 189, 248, 0.15);
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #090d12;
+}
+::-webkit-scrollbar-thumb {
+  background: #222b38;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Card and subtle glow utilities */
+.glass-card {
+  background-color: #12171f;
+  border: 1px solid #222b38;
+  transition: all 0.2s ease-in-out;
+}
+
+.glass-card:hover {
+  border-color: #38bdf850;
+  background-color: #151c27;
+}
+
+.glow-pill {
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  background: rgba(56, 189, 248, 0.08);
+  color: #38bdf8;
+}
