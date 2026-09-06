@@ -158,7 +158,7 @@ export const CaseStudy = () => {
         <div className="rounded-xl border border-[#222b38] bg-[#0d121a] p-6 space-y-6">
           <div className="flex items-center justify-between text-xs font-mono text-[#8b949e] border-b border-[#222b38] pb-3">
             <span>Architecture Flow Diagram</span>
-            <span className="text-[#38bdf8]">Component Decoupling</span>
+            <span className="text-[#38bdf8]">Application Data Flow</span>
           </div>
 
           {/* Architecture Nodes Flow */}
@@ -212,12 +212,12 @@ export const CaseStudy = () => {
                 <span className="font-bold">AI / LLM Integration Layer:</span>
                 <span className="text-[#8b949e]">
                   {project.id === 'rowl-ai'
-                    ? 'Groq Cloud Inference API (Sera AI low-latency streaming)'
+                    ? 'Groq Cloud API (Sera AI conversational reflection)'
                     : 'Backend LLM Evaluation & Accomplishment Synthesis'}
                 </span>
               </div>
               <span className="px-2 py-0.5 rounded bg-sky-500/10 text-[#38bdf8] border border-sky-500/20 text-[10px]">
-                Isolated Microservice Boundary
+                External API Integration
               </span>
             </div>
           )}
@@ -228,14 +228,15 @@ export const CaseStudy = () => {
                 <FileCheck className="w-4 h-4" />
                 <span className="font-bold">Document Engine:</span>
                 <span className="text-[#8b949e]">
-                  Structured Appraisal Data → PDF Generation Pipeline → Official Dossier
+                  Structured Appraisal Data → PDF Generation Pipeline → Evaluation Dossier
                 </span>
               </div>
               <span className="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 text-[10px]">
-                Accreditation Compliant
+                Institutional Format
               </span>
             </div>
           )}
+
         </div>
       </section>
 

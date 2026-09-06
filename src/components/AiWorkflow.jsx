@@ -13,8 +13,9 @@ export const AiWorkflow = () => {
         <div className="space-y-3 max-w-3xl">
           <div className="flex items-center gap-2 text-xs font-mono text-[#38bdf8]">
             <Cpu className="w-4 h-4" />
-            <span>ENGINEERING RIGOR</span>
+            <span>DEVELOPMENT PROCESS</span>
           </div>
+
           <h2 className="text-3xl sm:text-4xl font-bold text-[#f0f6fc] tracking-tight">
             {heading}
           </h2>
@@ -68,11 +69,12 @@ export const AiWorkflow = () => {
               <ShieldCheck className="w-4 h-4" />
             </div>
             <span>
-              Generated code is never shipped unreviewed. It is decomposed, unit tested, and measured against application security guidelines.
+              AI-generated output is treated as a starting point — I review, understand, test, and adapt it before integrating it into the application.
             </span>
           </div>
-          <span className="text-[#38bdf8] shrink-0 font-bold">Deterministic & Audited</span>
+          <span className="text-[#38bdf8] shrink-0 font-bold">Reviewed & Tested</span>
         </div>
+
 
       </div>
     </section>

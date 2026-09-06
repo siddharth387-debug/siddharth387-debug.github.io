@@ -71,7 +71,7 @@ export const Hero = ({ onOpenResume }) => {
 
             {/* Subtle disclaimer / positioning */}
             <p className="text-xs text-[#8b949e]/80 font-mono pt-2">
-              * Grounded in full-stack engineering principles — using AI for orchestration, prompt architecture & high-throughput APIs.
+              * Grounded in full-stack engineering principles — using AI for orchestration, prompt architecture, and practical web integration.
             </p>
           </div>
 
@@ -159,9 +159,10 @@ export const Hero = ({ onOpenResume }) => {
 
               {/* Status footer */}
               <div className="mt-4 pt-3 border-t border-[#222b38] flex items-center justify-between text-[11px] font-mono text-[#8b949e]">
-                <span>Status: Production Verified</span>
-                <span className="text-[#38bdf8]">Zero Hallucination Tolerance</span>
+                <span>Status: Deployed</span>
+                <span className="text-[#38bdf8]">AI Output Evaluated</span>
               </div>
+
             </div>
           </div>
 

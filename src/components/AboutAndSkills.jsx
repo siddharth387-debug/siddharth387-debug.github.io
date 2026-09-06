@@ -22,7 +22,7 @@ export const AboutAndSkills = () => {
             <div className="pt-2 text-xs font-mono text-[#8b949e] space-y-1.5 border-l-2 border-[#222b38] pl-3">
               <div>Based in {personal.location}</div>
               <div>MCA Candidate @ TCE Madurai</div>
-              <div>Full-Stack + AI Application Engineering</div>
+              <div>Full-Stack + AI-Assisted Web Development</div>
             </div>
           </div>
 
@@ -34,7 +34,7 @@ export const AboutAndSkills = () => {
               My foundation is built on practical web engineering: developing full-stack applications with the <strong>MERN stack</strong> (React, Node.js, Express, MongoDB) and <strong>PHP / MySQL</strong>. I have built real applications incorporating secure session and token authentication (JWT in HTTP-only cookies), role-based access control (RBAC), relational and document databases, and third-party integrations like Razorpay webhooks.
             </p>
             <p>
-              Rather than viewing AI as a replacement or gimmick, I actively apply <strong>Prompt Engineering</strong> and high-throughput inference APIs (such as Groq Cloud Inference) to build intelligent features into web software—such as conversational reflection workflows and automated evaluation synthesis.
+              Rather than viewing AI as a replacement or gimmick, I actively apply <strong>Prompt Engineering</strong> and inference APIs (such as Groq Cloud) to build useful capabilities into web applications—such as conversational reflection workflows and automated evaluation synthesis.
             </p>
           </div>
         </div>
@@ -46,8 +46,9 @@ export const AboutAndSkills = () => {
               {skills.heading}
             </h3>
             <span className="text-xs font-mono text-[#8b949e]">
-              Technologies in Production & Active Projects
+              Technologies Used Across Projects
             </span>
+
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

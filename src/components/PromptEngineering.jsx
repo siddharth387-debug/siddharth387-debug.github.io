@@ -133,7 +133,7 @@ export const PromptEngineering = () => {
                   <div className="flex items-center justify-between text-xs font-mono text-[#8b949e]">
                     <span className="flex items-center gap-1.5 text-emerald-400">
                       <CheckCircle2 className="w-3.5 h-3.5" />
-                      Deterministic Production Code Output:
+                      Structured Implementation Output:
                     </span>
                     <button
                       onClick={() => handleCopy(comparison.structured.outputPreview)}
@@ -168,7 +168,7 @@ export const PromptEngineering = () => {
                 {/* Issues List */}
                 <div className="space-y-2">
                   <div className="text-xs font-mono text-[#8b949e]">
-                    Vulnerabilities & Shortcomings of Unstructured Prompting:
+                    Shortcomings of Unstructured Prompting:
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono">
                     {comparison.naive.issues.map((issue, idx) => (
@@ -186,7 +186,7 @@ export const PromptEngineering = () => {
                 {/* Naive Output Preview */}
                 <div className="space-y-2">
                   <div className="text-xs font-mono text-[#8b949e]">
-                    Ambiguous / Insecure Model Output:
+                    Ambiguous / Incomplete Model Output:
                   </div>
                   <pre className="p-4 rounded-lg bg-[#090d12] border border-[#222b38] text-red-300/80 font-mono text-xs overflow-x-auto leading-relaxed">
                     {comparison.naive.outputPreview}
@@ -199,9 +199,10 @@ export const PromptEngineering = () => {
 
           {/* Footer takeaway */}
           <div className="px-6 py-3 border-t border-[#222b38] bg-[#12171f] flex items-center justify-between text-xs font-mono text-[#8b949e]">
-            <span>Takeaway: Structured constraints eliminate model guesswork.</span>
-            <span className="text-[#38bdf8]">Schema Validated</span>
+            <span>Takeaway: Structured context and clear constraints lead to reliable, reviewable output.</span>
+            <span className="text-[#38bdf8]">Structured Output</span>
           </div>
+
 
         </div>
 

@@ -11,8 +11,9 @@ export const portfolioData = {
     supportingStatement:
       "I build full-stack web applications and integrate LLM-powered capabilities to turn conventional software into intelligent experiences.",
     shortBio:
-      "Full-stack web developer with hands-on experience across the MERN stack, PHP/MySQL, REST API architecture, and production deployment. Focused on bridging reliable web engineering with pragmatic AI/LLM integration using structured prompt engineering and high-throughput inference APIs.",
+      "Full-stack web developer with hands-on experience across the MERN stack, PHP/MySQL, REST API architecture, and application deployment. Focused on combining reliable web development with practical AI/LLM integration using structured prompt engineering and LLM APIs.",
     primaryTech: ["MERN Stack", "PHP", "MySQL", "Prompt Engineering", "LLMs", "REST APIs"]
+
   },
 
   projects: [
@@ -48,19 +49,19 @@ export const portfolioData = {
         problem:
           "Traditional mental wellness journaling and mood-tracking apps often feel static, cold, and manual, leading to steep user drop-off. Conversely, generic AI chatbots lack contextual grounding, produce high-latency delays, and present safety concerns if prompted without strict emotional guardrails and clear non-clinical boundaries.",
         solution:
-          "Engineered a resilient MERN application with a decoupled AI layer. The client provides an intuitive, distraction-free environment for daily reflections, while the Express/Node backend authenticates sessions via HTTP-only cookies, manages journal persistence in MongoDB, and orchestrates ultra-low-latency conversational interactions via Groq Cloud Inference API.",
+          "Engineered a full-stack MERN application with an integrated AI layer. The client provides an intuitive, distraction-free environment for daily reflections, while the Express/Node backend authenticates sessions via HTTP-only cookies, manages journal persistence in MongoDB, and integrates conversational reflection interactions using the Groq Cloud Inference API.",
         architecture: {
           client: "React.js SPA (Vercel) with clean dark-mode UI and reactive chat state",
           backend: "Node.js & Express.js REST API (Render) handling auth, routes, and AI proxying",
           database: "MongoDB with indexed collections for users, encrypted reflection logs, and session journals",
-          aiLayer: "Groq Cloud Inference API powering Sera AI (low-latency Llama inference with prompt safety constraints)",
+          aiLayer: "Groq Cloud Inference API powering Sera AI (responsive Llama inference with prompt safety constraints)",
           payment: "Razorpay payment integration with secure webhook verification"
         },
         aiWorkflow: {
           step1: "User initiates reflection prompt in the web client",
           step2: "Backend retrieves session context and sanitizes incoming user input",
-          step3: "System injects ethical guardrails, empathetic persona parameters, and safety instructions",
-          step4: "High-throughput inference call executed via Groq Cloud Inference API",
+          step3: "System injects ethical guidelines, empathetic persona parameters, and safety instructions",
+          step4: "Inference call executed via Groq Cloud API",
           step5: "Response is validated, logged to reflection state, and streamed to the React UI"
         },
         engineeringDecisions: [
@@ -70,9 +71,9 @@ export const portfolioData = {
               "Implemented JSON Web Tokens (JWT) stored strictly in HTTP-only cookies with CSRF mitigation, preventing sensitive mental wellness session data from being vulnerable to script injection."
           },
           {
-            title: "Low-Latency AI Pipeline",
+            title: "Responsive AI Integration",
             detail:
-              "Integrated Groq Cloud Inference API instead of standard slow endpoints, slashing response latency and making conversational reflection feel immediate and natural."
+              "Integrated Groq Cloud Inference API to keep conversational responses fast and natural for daily reflections."
           },
           {
             title: "Payment Webhooks Verification",
@@ -80,11 +81,12 @@ export const portfolioData = {
               "Integrated Razorpay webhooks with cryptographic SHA-256 HMAC verification on the backend to handle billing events securely and asynchronously."
           },
           {
-            title: "Production Deployment",
+            title: "Application Deployment",
             detail:
-              "Decoupled deployment pipeline: React client hosted on Vercel edge network and Node/Express backend containerized and deployed on Render with automated environment secrets."
+              "Decoupled deployment pipeline: React client hosted on Vercel and Node/Express backend containerized and deployed on Render with managed environment secrets."
           }
         ],
+
         nonClinicalNotice:
           "Sera AI is engineered strictly for guided self-reflection, mindfulness, and mood tracking. It is explicitly constrained against diagnosing or providing clinical psychiatric interventions."
       }
@@ -136,21 +138,22 @@ export const portfolioData = {
         },
         engineeringDecisions: [
           {
-            title: "Multi-Role RBAC State Machine",
+            title: "Multi-Role RBAC Workflow",
             detail:
-              "Engineered stateful transition workflows: Draft → Submitted → HOD Review → Dean Approval → Archived, strictly preventing unauthorized score tampering or out-of-order submissions."
+              "Engineered role-based transition workflows (Draft → Submitted → HOD Review → Dean Approval), keeping appraisal actions organized and role-restricted."
           },
           {
-            title: "Deterministic PDF Report Generation",
+            title: "Standardized PDF Report Generation",
             detail:
-              "Integrated programmatic PDF rendering to generate pixel-precise, printable institutional evaluation dossiers matching official accreditation formats."
+              "Integrated server-side PDF generation to export formatted evaluation dossiers matching institutional accreditation guidelines."
           },
           {
-            title: "Human-in-the-Loop AI Design",
+            title: "Human-in-the-Loop Review",
             detail:
-              "AI outputs are strictly framed as pre-review drafts. Evaluators retain 100% final authority, ensuring institutional accountability and eliminating bias risk."
+              "AI-generated summaries are strictly framed as drafts. Evaluators review, adjust, and approve content before committing it to the final appraisal record."
           }
         ]
+
       }
     },
     {
@@ -214,29 +217,30 @@ export const portfolioData = {
     subheading:
       "AI assists my development process, but generated output is evaluated, understood, tested and deliberately integrated into the application.",
     steps: [
-      { step: "01", name: "Understand", desc: "Define functional requirements, edge cases, and architectural constraints." },
-      { step: "02", name: "Decompose", desc: "Break complex workflows into modular functions, schemas, and API contracts." },
-      { step: "03", name: "Prompt", desc: "Craft role-constrained, context-rich prompts with explicit schema definitions." },
-      { step: "04", name: "Explore", desc: "Analyze proposed implementations, alternate patterns, and security trade-offs." },
-      { step: "05", name: "Evaluate", desc: "Scrutinize generated code against codebase conventions and performance rules." },
-      { step: "06", name: "Implement", desc: "Integrate verified components into the active codebase with precision." },
-      { step: "07", name: "Test", desc: "Validate edge cases, auth boundaries, payload validation, and unit flows." },
-      { step: "08", name: "Debug", desc: "Diagnose stack traces and state anomalies systematically with AI assistance." },
-      { step: "09", name: "Validate", desc: "Confirm end-to-end integration across UI, server endpoints, and database." },
-      { step: "10", name: "Deploy", desc: "Ship to staging/production with verified environment variables and CI/CD." }
+      { step: "01", name: "Understand", desc: "Define the requirement, expected behavior, edge cases, and constraints." },
+      { step: "02", name: "Decompose", desc: "Break the problem into smaller functions, components, API tasks, or implementation steps." },
+      { step: "03", name: "Prompt", desc: "Create structured prompts with relevant context, constraints, and expected output." },
+      { step: "04", name: "Explore", desc: "Use AI to investigate possible implementations and alternative approaches." },
+      { step: "05", name: "Evaluate", desc: "Review generated suggestions against the application's requirements and existing codebase." },
+      { step: "06", name: "Implement", desc: "Adapt useful ideas and integrate them into the application." },
+      { step: "07", name: "Test", desc: "Test the implementation using expected flows and edge cases." },
+      { step: "08", name: "Debug", desc: "Use logs, errors, documentation, and AI assistance to investigate problems." },
+      { step: "09", name: "Validate", desc: "Confirm that the implementation works correctly within the application." },
+      { step: "10", name: "Deploy", desc: "Deploy the completed changes and verify the application in its target environment." }
     ]
+
   },
 
   promptEngineering: {
     heading: "Prompt Engineering",
     subheading:
-      "A systematic approach to working with Large Language Models. Production prompts must be structured, deterministic, and verifiable.",
+      "A practical approach to working with Large Language Models. Structured prompts provide clear context, constraints, and consistent output formats.",
     formula: [
       { label: "Role", desc: "Sets domain expertise and operational tone" },
       { label: "Context", desc: "Provides existing architecture, state, and environment constraints" },
       { label: "Task", desc: "Specific, unambiguous objective to execute" },
-      { label: "Constraints", desc: "Security rules, performance limits, and dependency restrictions" },
-      { label: "Expected Output", desc: "Strict format specification (e.g., deterministic JSON schema)" }
+      { label: "Constraints", desc: "Security rules, validation requirements, and dependency restrictions" },
+      { label: "Expected Output", desc: "Format specification (e.g., structured JSON or defined code interface)" }
     ],
     comparison: {
       naive: {
@@ -253,15 +257,15 @@ export const portfolioData = {
       },
       structured: {
         title: "Structured Engineering Prompt",
-        role: "Senior Node.js & Express Security Engineer",
+        role: "Full-Stack Node.js & Express Developer",
         context:
           "MERN stack mental wellness app (Rowl AI). Request is protected by JWT HTTP-only cookie middleware which attaches verified `req.user.id`.",
         task:
           "Implement the `createReflection` controller method with input validation, transaction error handling, and MongoDB persistence via Mongoose.",
         constraints:
-          "1. Require `moodTag` (enum: ['calm','anxious','focused','tired','hopeful']) and non-empty `content` (max 2000 chars).\n2. Sanitize inputs to prevent NoSQL injection and XSS.\n3. Return deterministic HTTP status codes (201 created, 400 validation error, 500 server error).\n4. Never leak internal database stack traces to the client.",
+          "1. Require `moodTag` (enum: ['calm','anxious','focused','tired','hopeful']) and non-empty `content` (max 2000 chars).\n2. Sanitize inputs to prevent NoSQL injection and XSS.\n3. Return appropriate HTTP status codes (201 created, 400 validation error, 500 server error).\n4. Avoid leaking internal database error messages to the client.",
         expectedOutput:
-          "Production Express controller wrapped in async handler, returning standard JSON contract: { success: boolean, data?: object, error?: string }",
+          "Express controller wrapped in async handler, returning a structured JSON response: { success: boolean, data?: object, error?: string }",
         outputPreview:
           "export const createReflection = async (req, res) => {\n  try {\n    const { moodTag, content } = req.body;\n    if (!VALID_MOODS.includes(moodTag) || !content?.trim()) {\n      return res.status(400).json({ success: false, error: 'Invalid reflection payload' });\n    }\n    const sanitized = sanitizeInput(content);\n    const doc = await Reflection.create({\n      userId: req.user.id,\n      moodTag,\n      content: sanitized\n    });\n    return res.status(201).json({ success: true, data: doc });\n  } catch (err) {\n    logger.error('Reflection creation error', { userId: req.user.id, error: err.message });\n    return res.status(500).json({ success: false, error: 'Internal processing error' });\n  }\n};"
       }
@@ -276,19 +280,20 @@ export const portfolioData = {
       {
         title: "Engineering Judgment First",
         detail:
-          "AI proposes; engineering decides. Every line of code, schema modification, and API structure is vetted against production reliability standards."
+          "AI proposes; engineering decides. Every line of code, schema change, and component is reviewed, understood, and tested before integration."
       },
       {
-        title: "Contract-Driven Development",
+        title: "Clear Interface Expectations",
         detail:
-          "Using strict JSON schemas and TypeScript/JSDoc contracts to ensure AI outputs match exact web application requirements."
+          "Defining explicit input/output structures and data shapes so AI assistance aligns directly with the application's actual requirements."
       },
       {
-        title: "Ethical & Responsible Boundaries",
+        title: "Responsible Application Boundaries",
         detail:
-          "Applying rigorous guardrails to conversational AI components (such as in Rowl AI), explicitly avoiding medical claims or unmonitored actions."
+          "Designing clear instructions and boundaries for conversational features (such as in Rowl AI), keeping them focused on guided reflection without medical claims."
       }
     ]
+
   },
 
   skills: {
