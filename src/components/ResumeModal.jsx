@@ -67,7 +67,17 @@ export const ResumeModal = ({ isOpen, onClose }) => {
               >
                 <Github className="w-3.5 h-3.5" /> github.com/siddharth387-debug
               </a>
+
+              <a
+                href="https://www.linkedin.com/in/siddharth-k-b0a118340/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 text-[#38bdf8] hover:underline"
+              >
+                <Linkedin className="w-3.5 h-3.5" /> linkedin.com/in/siddharth-k-b0a118340
+              </a>
             </div>
+
           </div>
 
           {/* Professional Summary */}

@@ -5,9 +5,9 @@ export const portfolioData = {
     location: "Madurai, Tamil Nadu, India",
     email: "personalsiddharth387@gmail.com",
     github: "https://github.com/siddharth387-debug",
-
-    linkedin: "https://www.linkedin.com/in/siddharth-k-webdev/", // Replace with exact LinkedIn URL if needed
+    linkedin: "https://www.linkedin.com/in/siddharth-k-b0a118340/",
     status: "Open to opportunities",
+
     supportingStatement:
       "I build full-stack web applications and integrate LLM-powered capabilities to turn conventional software into intelligent experiences.",
     shortBio:

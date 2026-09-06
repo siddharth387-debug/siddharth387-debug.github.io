@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, FileText, ArrowUpRight, Terminal } from 'lucide-react';
-import { Github } from './Icons';
+import { Github, Linkedin } from './Icons';
 import { portfolioData } from '../data/portfolioData';
+
 
 
 export const Navbar = ({ onOpenResume }) => {
@@ -65,7 +66,18 @@ export const Navbar = ({ onOpenResume }) => {
           >
             <Github className="w-4 h-4" />
           </a>
+
+          <a
+            href={portfolioData.personal.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn Profile"
+            className="p-1.5 rounded-md hover:bg-[#12171f] text-[#8b949e] hover:text-[#f0f6fc] border border-transparent hover:border-[#222b38] transition-all"
+          >
+            <Linkedin className="w-4 h-4" />
+          </a>
         </nav>
+
 
         {/* Mobile Hamburger Toggle */}
         <div className="flex md:hidden items-center gap-2">
@@ -98,7 +110,7 @@ export const Navbar = ({ onOpenResume }) => {
               {link.name}
             </a>
           ))}
-          <div className="pt-2 flex items-center justify-between">
+          <div className="pt-2 flex flex-col gap-2">
             <a
               href={portfolioData.personal.github}
               target="_blank"
@@ -107,7 +119,16 @@ export const Navbar = ({ onOpenResume }) => {
             >
               <Github className="w-4 h-4" /> github.com/siddharth387-debug
             </a>
+            <a
+              href={portfolioData.personal.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-xs font-mono text-[#8b949e] hover:text-[#f0f6fc]"
+            >
+              <Linkedin className="w-4 h-4" /> linkedin.com/in/siddharth-k-b0a118340
+            </a>
           </div>
+
         </div>
       )}
     </header>

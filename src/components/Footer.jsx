@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowUp, Terminal, Heart } from 'lucide-react';
-import { Github } from './Icons';
+import { Github, Linkedin } from './Icons';
 import { portfolioData } from '../data/portfolioData';
 
 
@@ -30,6 +30,17 @@ export const Footer = () => {
             <Github className="w-3.5 h-3.5" />
             GitHub
           </a>
+
+          <a
+            href={portfolioData.personal.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[#f0f6fc] transition-colors flex items-center gap-1.5"
+          >
+            <Linkedin className="w-3.5 h-3.5" />
+            LinkedIn
+          </a>
+
 
           <button
             onClick={scrollToTop}
