@@ -142,7 +142,7 @@ export const ResumeModal = ({ isOpen, onClose }) => {
                 <span className="font-mono text-[#8b949e]">2026 – Present</span>
               </div>
               <div className="text-[11px] font-mono text-[#38bdf8]">
-                MERN Stack | Institutional Appraisal Platform
+                MERN Stack | Institutional Appraisal Platform | Live: tce-appraisal.vercel.app
               </div>
               <ul className="list-disc list-inside text-xs text-[#8b949e] space-y-1">
                 <li>Building a web-based system to digitize and automate the institutional faculty appraisal lifecycle.</li>

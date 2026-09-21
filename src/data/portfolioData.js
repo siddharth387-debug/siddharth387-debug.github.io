@@ -112,8 +112,8 @@ export const portfolioData = {
         "RBAC",
         "LLM API"
       ],
-      liveUrl: null, // Academic project on campus network / staging
-      githubUrl: "https://github.com/siddharth387-debug",
+      liveUrl: "https://tce-appraisal.vercel.app/",
+      githubUrl: "https://github.com/siddharth387-debug/Tce-apprisal",
       timeline: "2026 – Present (Active Academic Project)",
       caseStudy: {
         overview:
