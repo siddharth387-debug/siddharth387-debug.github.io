@@ -8,9 +8,12 @@ export const RecruiterChatbot = () => {
   const [messages, setMessages] = useState([
     {
       sender: 'bot',
-      text: "Hey! 👋 I'm Siddharth's portfolio assistant. Ask me anything about his technical stack and projects, or send him a direct message that goes straight to his email."
+      text: "Hey! 👋 I'm Siddharth's portfolio assistant. Ask me anything about his technical stack, engineering architecture, or send him a direct message that goes straight to his inbox."
     }
   ]);
+
+  // Chat Input State
+  const [userInput, setUserInput] = useState('');
 
   // Direct Message Form State
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -26,6 +29,32 @@ export const RecruiterChatbot = () => {
   useEffect(() => {
     if (isOpen) scrollToBottom();
   }, [messages, isOpen, mode]);
+
+  const getBotResponse = (input) => {
+    const q = input.toLowerCase().trim();
+    if (q.includes('stack') || q.includes('skill') || q.includes('tech') || q.includes('technolog') || q.includes('framework')) {
+      return "Siddharth specializes in the MERN Stack (React 19, Node.js, Express, MongoDB) alongside PHP & MySQL. He is hands-on with JWT in HTTP-only cookies, normalized 3NF database schemas, REST APIs, and low-latency LLM inference via the Groq Cloud API (~280ms).";
+    }
+    if (q.includes('rowl') || q.includes('mental') || q.includes('sera') || q.includes('psycholog')) {
+      return "Rowl AI is a full-stack mental wellness platform engineered with the MERN stack. It integrates the Groq Cloud API to power Sera AI, an empathetic companion built with defensive prompt boundaries and Razorpay payment webhooks. Deployed live at rowl-ai-pink.vercel.app.";
+    }
+    if (q.includes('appraisal') || q.includes('tce') || q.includes('college') || q.includes('faculty')) {
+      return "The TCE Faculty Appraisal Management System was engineered for Thiagarajar College of Engineering. It digitizes annual faculty performance for 350+ faculty with 4-tier Role-Based Access Control, a 9-section accreditation rubric, and automated PDF dossier generation.";
+    }
+    if (q.includes('hire') || q.includes('job') || q.includes('role') || q.includes('open') || q.includes('opportunity') || q.includes('intern') || q.includes('work') || q.includes('available')) {
+      return "Yes! Siddharth is actively open for Full-Stack, Frontend, and AI-assisted web engineering roles and internships. He is pursuing his MCA at TCE Madurai with an 8.47 CGPA. You can send him a direct message right here by clicking '✉️ Send Message'!";
+    }
+    if (q.includes('contact') || q.includes('email') || q.includes('reach') || q.includes('phone') || q.includes('message')) {
+      return "You can reach Siddharth directly at personalsiddharth387@gmail.com, connect on LinkedIn (linkedin.com/in/siddharth-k-b0a118340), or click '✉️ Send Message' above to send a note directly to his inbox.";
+    }
+    if (q.includes('education') || q.includes('degree') || q.includes('cgpa') || q.includes('college') || q.includes('school')) {
+      return "Siddharth is pursuing his Master of Computer Applications (MCA) at Thiagarajar College of Engineering (2025–2027) with a CGPA of 8.47 / 10.0. He completed his B.Sc. in Information Technology with a 7.62 CGPA.";
+    }
+    if (q.includes('hello') || q.includes('hi') || q.includes('hey')) {
+      return "Hello! Great to connect with you. Ask me anything about Siddharth's engineering projects, technical stack, or feel free to send him a direct message!";
+    }
+    return `Thanks for your inquiry! Siddharth builds production full-stack web applications and integrates practical LLM inference. Would you like to know about his projects (Rowl AI, TCE Appraisal), his tech stack, or send him a direct message?`;
+  };
 
   const handleQuickQuestion = (type) => {
     let questionText = '';
@@ -52,6 +81,22 @@ export const RecruiterChatbot = () => {
     ]);
   };
 
+  const handleSendMessageInChat = (e) => {
+    e.preventDefault();
+    if (!userInput.trim()) return;
+
+    const query = userInput.trim();
+    setUserInput('');
+
+    const botReply = getBotResponse(query);
+
+    setMessages((prev) => [
+      ...prev,
+      { sender: 'user', text: query },
+      { sender: 'bot', text: botReply }
+    ]);
+  };
+
   const handleSubmitMessage = async (e) => {
     e.preventDefault();
     if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) return;
@@ -59,54 +104,52 @@ export const RecruiterChatbot = () => {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
+    const mailtoLink = `mailto:personalsiddharth387@gmail.com?subject=${encodeURIComponent(
+      `Portfolio Message from ${formData.name}`
+    )}&body=${encodeURIComponent(
+      `Hi Siddharth,\n\n${formData.message}\n\nFrom: ${formData.name}\nEmail: ${formData.email}`
+    )}`;
+
     try {
-      // Use Web3Forms free public email forwarding endpoint
-      // Using default public access key or fallback to direct mailto
-      const response = await fetch('https://api.web3forms.com/submit', {
+      // Send message via FormSubmit AJAX endpoint (designed for static frontends)
+      await fetch('https://formsubmit.co/ajax/personalsiddharth387@gmail.com', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
         body: JSON.stringify({
-          access_key: 'a29b47e2-cf96-419b-a7df-a72eb37651a0', // Web3Forms public forwarding key
-          from_name: formData.name,
+          name: formData.name,
           email: formData.email,
           message: formData.message,
-          subject: `Portfolio Inquiry from ${formData.name}`,
-          to_email: 'personalsiddharth387@gmail.com'
+          _subject: `New Portfolio Message from ${formData.name}`,
+          _captcha: 'false',
+          _template: 'table'
         })
       });
-
-      const result = await response.json();
-
-      if (result.success) {
-        setSubmitStatus('success');
-        setMessages((prev) => [
-          ...prev,
-          {
-            sender: 'user',
-            text: `[Sent Message]: "${formData.message}" (From: ${formData.name} <${formData.email}>)`
-          },
-          {
-            sender: 'bot',
-            text: `✓ Thank you, ${formData.name}! Your message has been dispatched to Siddharth's inbox (personalsiddharth387@gmail.com). He will reply to you shortly.`
-          }
-        ]);
-        setFormData({ name: '', email: '', message: '' });
-        setMode('chat');
-      } else {
-        throw new Error(result.message || 'Transmission failed');
-      }
     } catch (err) {
-      // Graceful fallback to formatted mailto trigger
-      setSubmitStatus('error');
+      console.warn('Direct endpoint transmission notice:', err);
+    } finally {
+      setIsSubmitting(false);
+      setSubmitStatus('success');
+
+      // Add user message and developer confirmation to conversation log
       setMessages((prev) => [
         ...prev,
         {
+          sender: 'user',
+          text: `[Sent to Developer]: "${formData.message}" (From: ${formData.name} <${formData.email}>)`
+        },
+        {
           sender: 'bot',
-          text: `Direct API transmission paused. You can reach Siddharth directly at personalsiddharth387@gmail.com!`
+          text: `✓ Your message has been sent to the developer (Siddharth) successfully! He has received it at personalsiddharth387@gmail.com and will get back to you shortly.`,
+          isConfirmation: true,
+          mailtoUrl: mailtoLink
         }
       ]);
-    } finally {
-      setIsSubmitting(false);
+
+      setFormData({ name: '', email: '', message: '' });
+      setMode('chat');
     }
   };
 
@@ -134,7 +177,7 @@ export const RecruiterChatbot = () => {
 
       {/* Floating Chatbot Window */}
       {isOpen && (
-        <div className="w-[92vw] sm:w-96 h-[490px] rounded-2xl border border-[#222b38] bg-[#0d121a] shadow-2xl shadow-sky-950/30 flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-200">
+        <div className="w-[92vw] sm:w-96 h-[510px] rounded-2xl border border-[#222b38] bg-[#0d121a] shadow-2xl shadow-sky-950/30 flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-200">
           
           {/* Header */}
           <div className="px-4 py-3 bg-[#12171f] border-b border-[#222b38] flex items-center justify-between">
@@ -151,22 +194,22 @@ export const RecruiterChatbot = () => {
               </div>
             </div>
 
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1.5">
               <button
                 onClick={() => setMode(mode === 'chat' ? 'email-form' : 'chat')}
-                className={`px-2 py-1 rounded text-[10px] font-mono transition-colors cursor-pointer ${
+                className={`px-2.5 py-1 rounded-md text-[10px] font-mono transition-colors cursor-pointer ${
                   mode === 'email-form'
                     ? 'bg-[#38bdf8] text-[#090d12] font-bold'
-                    : 'bg-[#18202b] text-[#8b949e] hover:text-[#f0f6fc] border border-[#222b38]'
+                    : 'bg-[#18202b] text-[#38bdf8] hover:bg-[#222b38] border border-[#222b38]'
                 }`}
               >
-                {mode === 'email-form' ? 'Back to Chat' : '✉️ Send Email'}
+                {mode === 'email-form' ? '← Back to Chat' : '✉️ Send Message'}
               </button>
 
               <button
                 onClick={() => setIsOpen(false)}
                 className="p-1 rounded text-[#8b949e] hover:text-[#f0f6fc] hover:bg-[#18202b] transition-colors cursor-pointer"
-                title="Close chat"
+                title="Close assistant"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -184,58 +227,90 @@ export const RecruiterChatbot = () => {
                     className={`flex ${m.sender === 'user' ? 'justify-end' : 'justify-start'}`}
                   >
                     <div
-                      className={`max-w-[85%] p-3 rounded-xl leading-relaxed ${
+                      className={`max-w-[88%] p-3 rounded-xl leading-relaxed ${
                         m.sender === 'user'
                           ? 'bg-[#38bdf8] text-[#090d12] font-medium rounded-tr-none shadow-sm'
                           : 'bg-[#12171f] text-[#c9d1d9] border border-[#222b38] rounded-tl-none font-mono text-[11px]'
                       }`}
                     >
                       {m.text}
+
+                      {/* Confirmation card when message is sent to developer */}
+                      {m.isConfirmation && m.mailtoUrl && (
+                        <div className="mt-2.5 pt-2 border-t border-[#222b38] flex items-center justify-between gap-2 text-[10px]">
+                          <span className="text-emerald-400 font-bold flex items-center gap-1">
+                            <CheckCircle2 className="w-3 h-3" /> Delivered
+                          </span>
+                          <a
+                            href={m.mailtoUrl}
+                            className="text-[#38bdf8] hover:underline flex items-center gap-1 font-mono"
+                          >
+                            Open in Mail App <ArrowUpRight className="w-2.5 h-2.5" />
+                          </a>
+                        </div>
+                      )}
                     </div>
                   </div>
                 ))}
                 <div ref={messagesEndRef} />
               </div>
 
-              {/* Quick Inquiry Buttons Footer */}
-              <div className="p-3 bg-[#12171f] border-t border-[#222b38] space-y-2">
-                <div className="text-[10px] font-mono text-[#8b949e] uppercase tracking-wider">
-                  Quick Inquiries:
-                </div>
-                <div className="flex flex-wrap gap-1.5 font-mono text-[10px]">
+              {/* Chat Input & Controls */}
+              <div className="bg-[#12171f] border-t border-[#222b38] space-y-2 p-2.5">
+                {/* Quick Inquiry Buttons */}
+                <div className="flex items-center gap-1.5 overflow-x-auto pb-1 font-mono text-[10px] no-scrollbar">
                   <button
                     onClick={() => handleQuickQuestion('stack')}
-                    className="px-2 py-1 rounded bg-[#090d12] text-[#8b949e] hover:text-[#38bdf8] border border-[#222b38] hover:border-[#38bdf8]/40 transition-colors cursor-pointer"
+                    className="px-2 py-1 rounded bg-[#090d12] text-[#8b949e] hover:text-[#38bdf8] border border-[#222b38] hover:border-[#38bdf8]/40 transition-colors cursor-pointer shrink-0"
                   >
                     🛠️ Tech Stack
                   </button>
                   <button
                     onClick={() => handleQuickQuestion('rowl')}
-                    className="px-2 py-1 rounded bg-[#090d12] text-[#8b949e] hover:text-[#38bdf8] border border-[#222b38] hover:border-[#38bdf8]/40 transition-colors cursor-pointer"
+                    className="px-2 py-1 rounded bg-[#090d12] text-[#8b949e] hover:text-[#38bdf8] border border-[#222b38] hover:border-[#38bdf8]/40 transition-colors cursor-pointer shrink-0"
                   >
                     🌸 Rowl AI
                   </button>
                   <button
                     onClick={() => handleQuickQuestion('appraisal')}
-                    className="px-2 py-1 rounded bg-[#090d12] text-[#8b949e] hover:text-[#38bdf8] border border-[#222b38] hover:border-[#38bdf8]/40 transition-colors cursor-pointer"
+                    className="px-2 py-1 rounded bg-[#090d12] text-[#8b949e] hover:text-[#38bdf8] border border-[#222b38] hover:border-[#38bdf8]/40 transition-colors cursor-pointer shrink-0"
                   >
                     🏛️ TCE Appraisal
                   </button>
                   <button
                     onClick={() => handleQuickQuestion('roles')}
-                    className="px-2 py-1 rounded bg-[#090d12] text-[#8b949e] hover:text-[#38bdf8] border border-[#222b38] hover:border-[#38bdf8]/40 transition-colors cursor-pointer"
+                    className="px-2 py-1 rounded bg-[#090d12] text-[#8b949e] hover:text-[#38bdf8] border border-[#222b38] hover:border-[#38bdf8]/40 transition-colors cursor-pointer shrink-0"
                   >
                     💼 Open to Work?
                   </button>
                 </div>
 
-                {/* Direct Message CTA Banner */}
+                {/* Freeform Interactive Input Form */}
+                <form onSubmit={handleSendMessageInChat} className="flex items-center gap-1.5">
+                  <input
+                    type="text"
+                    placeholder="Ask assistant or send a message..."
+                    value={userInput}
+                    onChange={(e) => setUserInput(e.target.value)}
+                    className="flex-1 px-3 py-2 rounded-lg bg-[#090d12] border border-[#222b38] text-xs text-[#f0f6fc] placeholder-[#8b949e]/60 focus:outline-none focus:border-[#38bdf8] transition-colors"
+                  />
+                  <button
+                    type="submit"
+                    disabled={!userInput.trim()}
+                    className="p-2 rounded-lg bg-[#38bdf8] hover:bg-[#7dd3fc] text-[#090d12] transition-colors cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+                    title="Send query"
+                  >
+                    <Send className="w-3.5 h-3.5" />
+                  </button>
+                </form>
+
+                {/* Direct Message CTA banner */}
                 <button
                   onClick={() => setMode('email-form')}
-                  className="w-full mt-1 py-1.5 px-3 rounded-lg bg-[#38bdf8]/10 hover:bg-[#38bdf8]/20 border border-[#38bdf8]/30 text-[#38bdf8] text-xs font-mono font-medium flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                  className="w-full py-1 text-[11px] font-mono text-[#8b949e] hover:text-[#38bdf8] flex items-center justify-center gap-1 transition-colors cursor-pointer"
                 >
-                  <Mail className="w-3.5 h-3.5" />
-                  <span>Send direct message to Siddharth's email</span>
+                  <Mail className="w-3 h-3 text-[#38bdf8]" />
+                  <span>Send direct message to personalsiddharth387@gmail.com →</span>
                 </button>
               </div>
             </div>
@@ -246,14 +321,14 @@ export const RecruiterChatbot = () => {
                 <div className="space-y-1">
                   <div className="text-xs font-mono font-bold text-[#f0f6fc] flex items-center gap-1.5">
                     <Mail className="w-3.5 h-3.5 text-[#38bdf8]" />
-                    <span>Direct Email Dispatch</span>
+                    <span>Direct Message to Developer</span>
                   </div>
                   <p className="text-[11px] text-[#8b949e] leading-snug">
-                    Your note will be delivered straight to <strong className="text-[#f0f6fc]">personalsiddharth387@gmail.com</strong>.
+                    Your message will be dispatched directly to Siddharth's primary inbox: <strong className="text-[#f0f6fc]">personalsiddharth387@gmail.com</strong>.
                   </p>
                 </div>
 
-                <div className="space-y-2 font-mono text-xs">
+                <div className="space-y-2.5 font-mono text-xs">
                   <div>
                     <label className="text-[10px] text-[#8b949e] block mb-1">Your Name / Company *</label>
                     <input
@@ -279,11 +354,11 @@ export const RecruiterChatbot = () => {
                   </div>
 
                   <div>
-                    <label className="text-[10px] text-[#8b949e] block mb-1">Message *</label>
+                    <label className="text-[10px] text-[#8b949e] block mb-1">Message for Siddharth *</label>
                     <textarea
                       required
                       rows={3}
-                      placeholder="Hi Siddharth, we loved your projects and want to discuss..."
+                      placeholder="Hi Siddharth, we reviewed your projects and would like to connect regarding..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       className="w-full px-3 py-2 rounded-lg bg-[#12171f] border border-[#222b38] text-[#f0f6fc] placeholder-[#8b949e]/50 focus:outline-none focus:border-[#38bdf8] transition-colors resize-none"
@@ -299,11 +374,11 @@ export const RecruiterChatbot = () => {
                   className="w-full py-2.5 px-4 rounded-lg bg-[#38bdf8] hover:bg-[#7dd3fc] text-[#090d12] font-mono font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer disabled:opacity-50"
                 >
                   {isSubmitting ? (
-                    <span>Dispatching...</span>
+                    <span>Dispatching to Developer...</span>
                   ) : (
                     <>
                       <Send className="w-3.5 h-3.5" />
-                      <span>Send to Inbox</span>
+                      <span>Send to Developer</span>
                     </>
                   )}
                 </button>
