@@ -7,6 +7,8 @@ import {
 } from 'lucide-react';
 import { Github } from './Icons';
 import { portfolioData } from '../data/portfolioData';
+import rowlAiScreenshot from '../assets/rowl-ai-preview.png';
+import tceAppraisalScreenshot from '../assets/tce-appraisal-preview.png';
 
 export const CaseStudy = () => {
   const { id } = useParams();
@@ -374,7 +376,7 @@ export const CaseStudy = () => {
 // ==========================================
 const ProjectFeatureWalkthrough = ({ project }) => {
   const [tab, setTab] = useState(
-    project.id === 'college-appraisal' ? 'roles' : project.id === 'rowl-ai' ? 'chat' : 'details'
+    project.id === 'college-appraisal' ? 'screenshot' : project.id === 'rowl-ai' ? 'screenshot' : 'details'
   );
 
   // 1. TCE Appraisal Walkthrough
@@ -391,7 +393,15 @@ const ProjectFeatureWalkthrough = ({ project }) => {
             </p>
           </div>
 
-          <div className="flex items-center gap-1.5 bg-[#090d12] p-1 rounded-lg border border-[#222b38] font-mono text-xs shrink-0">
+          <div className="flex items-center gap-1.5 bg-[#090d12] p-1 rounded-lg border border-[#222b38] font-mono text-xs shrink-0 flex-wrap">
+            <button
+              onClick={() => setTab('screenshot')}
+              className={`px-3 py-1.5 rounded transition-all cursor-pointer ${
+                tab === 'screenshot' ? 'bg-[#38bdf8] text-[#090d12] font-bold shadow-sm' : 'text-[#8b949e] hover:text-[#f0f6fc]'
+              }`}
+            >
+              📸 Live Screenshot
+            </button>
             <button
               onClick={() => setTab('roles')}
               className={`px-3 py-1.5 rounded transition-all cursor-pointer ${
@@ -427,9 +437,26 @@ const ProjectFeatureWalkthrough = ({ project }) => {
             <a href="https://tce-appraisal.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-[#38bdf8] underline font-bold">
               tce-appraisal.vercel.app
             </a>{' '}
-            is actively secured behind Google OAuth restricted to verified <code className="text-[#f0f6fc]">@tce.edu</code> institutional accounts. This interactive walkthrough simulates the exact role views, scoring logic, and report exports engineered into the system.
+            is actively secured behind Google OAuth restricted to verified <code className="text-[#f0f6fc]">@tce.edu</code> institutional accounts. This interactive walkthrough showcases the live application interface, role views, scoring logic, and report exports engineered into the system.
           </div>
         </div>
+
+        {/* Tab 0: Real Live Screenshot */}
+        {tab === 'screenshot' && (
+          <div className="rounded-xl overflow-hidden border border-[#222b38] bg-[#090d12] shadow-2xl p-2 space-y-2">
+            <div className="relative rounded-lg overflow-hidden border border-[#222b38]">
+              <img
+                src={tceAppraisalScreenshot}
+                alt="TCE Faculty Appraisal System Screenshot"
+                className="w-full object-cover max-h-[500px] object-top"
+              />
+            </div>
+            <div className="flex items-center justify-between px-3 py-1.5 text-xs font-mono text-[#8b949e]">
+              <span>Official Portal UI: https://tce-appraisal.vercel.app/</span>
+              <span className="text-emerald-400 font-bold">● Deployed on Vercel</span>
+            </div>
+          </div>
+        )}
 
         {/* Tab 1: 4-Tier Governance Roles */}
         {tab === 'roles' && (
@@ -590,7 +617,15 @@ const ProjectFeatureWalkthrough = ({ project }) => {
             </p>
           </div>
 
-          <div className="flex items-center gap-1.5 bg-[#090d12] p-1 rounded-lg border border-[#222b38] font-mono text-xs shrink-0">
+          <div className="flex items-center gap-1.5 bg-[#090d12] p-1 rounded-lg border border-[#222b38] font-mono text-xs shrink-0 flex-wrap">
+            <button
+              onClick={() => setTab('screenshot')}
+              className={`px-3 py-1.5 rounded transition-all cursor-pointer ${
+                tab === 'screenshot' ? 'bg-[#38bdf8] text-[#090d12] font-bold shadow-sm' : 'text-[#8b949e] hover:text-[#f0f6fc]'
+              }`}
+            >
+              📸 Live Screenshot
+            </button>
             <button
               onClick={() => setTab('chat')}
               className={`px-3 py-1.5 rounded transition-all cursor-pointer ${
@@ -609,6 +644,23 @@ const ProjectFeatureWalkthrough = ({ project }) => {
             </button>
           </div>
         </div>
+
+        {/* Tab 0: Real Live Screenshot */}
+        {tab === 'screenshot' && (
+          <div className="rounded-xl overflow-hidden border border-[#222b38] bg-[#090d12] shadow-2xl p-2 space-y-2">
+            <div className="relative rounded-lg overflow-hidden border border-[#222b38]">
+              <img
+                src={rowlAiScreenshot}
+                alt="Rowl AI Healing Sanctuary Platform Screenshot"
+                className="w-full object-cover max-h-[500px] object-top"
+              />
+            </div>
+            <div className="flex items-center justify-between px-3 py-1.5 text-xs font-mono text-[#8b949e]">
+              <span>Live Application UI: https://rowl-ai-pink.vercel.app/</span>
+              <span className="text-emerald-400 font-bold">● Deployed on Vercel</span>
+            </div>
+          </div>
+        )}
 
         {/* Tab 1: Sera AI Chat Mockup */}
         {tab === 'chat' && (
