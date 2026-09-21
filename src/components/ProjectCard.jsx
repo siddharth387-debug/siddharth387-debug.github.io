@@ -6,6 +6,14 @@ import rowlAiScreenshot from '../assets/rowl-ai-preview.png';
 import tceAppraisalScreenshot from '../assets/tce-appraisal-preview.png';
 
 export const ProjectCard = ({ project, isFeatured = false }) => {
+  const handleInspectPrompt = (e) => {
+    e.preventDefault();
+    const el = document.getElementById('prompting');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div
       data-cursor="CASE STUDY"
@@ -77,7 +85,11 @@ export const ProjectCard = ({ project, isFeatured = false }) => {
             </div>
             <span className="text-[10px] text-emerald-400 font-bold flex items-center gap-1">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-              {project.liveUrl ? 'Live Production' : 'Verified'}
+              {project.id === 'developer-portfolio'
+                ? 'Current Site (Active)'
+                : project.liveUrl
+                ? 'Live Production'
+                : 'Verified'}
             </span>
           </div>
 
@@ -199,13 +211,29 @@ export const ProjectCard = ({ project, isFeatured = false }) => {
       {/* Card Actions Footer */}
       <div className="px-6 sm:px-8 py-4 border-t border-[#222b38] bg-[#0d121a]/60 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3">
-          {project.liveUrl ? (
+          {project.id === 'developer-portfolio' ? (
+            <>
+              <button
+                type="button"
+                onClick={handleInspectPrompt}
+                data-cursor="INSPECTOR"
+                className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-md bg-[#38bdf8] text-[#090d12] hover:bg-[#7dd3fc] transition-colors cursor-pointer font-sans"
+              >
+                <Sparkles className="w-3.5 h-3.5" />
+                Try Prompt Inspector
+              </button>
+              <span className="inline-flex items-center gap-1 text-[11px] font-mono text-emerald-400 px-2 py-1 rounded bg-emerald-500/10 border border-emerald-500/20">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                Active Site
+              </span>
+            </>
+          ) : project.liveUrl ? (
             <a
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
               data-cursor="LIVE DEMO"
-              className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-md bg-[#38bdf8] text-[#090d12] hover:bg-[#7dd3fc] transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-md bg-[#38bdf8] text-[#090d12] hover:bg-[#7dd3fc] transition-colors cursor-pointer font-sans"
             >
               Live Demo
               <ExternalLink className="w-3.5 h-3.5" />

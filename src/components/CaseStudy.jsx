@@ -98,7 +98,15 @@ export const CaseStudy = () => {
 
         {/* Action Links */}
         <div className="flex flex-wrap items-center gap-3 pt-4">
-          {project.liveUrl && (
+          {project.id === 'developer-portfolio' ? (
+            <a
+              href="#/prompting"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-[#38bdf8] text-[#090d12] text-xs font-medium hover:bg-[#7dd3fc] transition-colors"
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              Try Prompt Inspector
+            </a>
+          ) : project.liveUrl ? (
             <a
               href={project.liveUrl}
               target="_blank"
@@ -108,7 +116,7 @@ export const CaseStudy = () => {
               Live Demo
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
-          )}
+          ) : null}
           <a
             href={project.githubUrl}
             target="_blank"
