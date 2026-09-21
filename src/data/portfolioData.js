@@ -41,7 +41,8 @@ export const portfolioData = {
         "Render"
       ],
       liveUrl: "https://rowl-ai-pink.vercel.app/",
-      githubUrl: "https://github.com/siddharth387-debug",
+      githubUrl: "https://github.com/siddharth387-debug/rowl-ai",
+      filterTags: ["all", "ai", "mern"],
       timeline: "7-Week Production Cycle (2026)",
       caseStudy: {
         overview:
@@ -114,6 +115,7 @@ export const portfolioData = {
       ],
       liveUrl: "https://tce-appraisal.vercel.app/",
       githubUrl: "https://github.com/siddharth387-debug/Tce-apprisal",
+      filterTags: ["all", "ai", "mern"],
       timeline: "2026 – Present (Active Academic Project)",
       caseStudy: {
         overview:
@@ -177,7 +179,8 @@ export const portfolioData = {
         "RBAC"
       ],
       liveUrl: null, // Localhost / Internal project
-      githubUrl: "https://github.com/siddharth387-debug",
+      githubUrl: "https://github.com/siddharth387-debug/serviceMarketplace",
+      filterTags: ["all", "php"],
       timeline: "2024 – 2025",
       caseStudy: {
         overview:
@@ -206,6 +209,59 @@ export const portfolioData = {
             title: "Role-Based Access Control (RBAC)",
             detail:
               "Engineered multi-tenant authorization logic separating Customer booking actions, Provider schedule management, and Administrator moderation privileges."
+          }
+        ]
+      }
+    },
+    {
+      id: "developer-portfolio",
+      number: "04",
+      name: "Developer Portfolio & Prompt Inspector",
+      category: "Frontend Architecture & CI/CD",
+      headline: "Interactive Technical Portfolio with Live Tooling",
+      summary:
+        "A dark-technical developer portfolio engineered with React 19, Tailwind CSS v4, and automated GitHub Pages CI/CD. Features an interactive Prompt Engineering Inspector and real-time architectural diagrams.",
+      featured: false,
+      hasAi: true,
+      aiBadge: "Interactive AI Inspector",
+      stack: [
+        "React 19",
+        "Vite",
+        "Tailwind CSS v4",
+        "React Router",
+        "GitHub Actions CI/CD"
+      ],
+      liveUrl: "https://siddharth387-debug.github.io/",
+      githubUrl: "https://github.com/siddharth387-debug/siddharth387-debug.github.io",
+      filterTags: ["all", "ai", "frontend"],
+      timeline: "2026",
+      caseStudy: {
+        overview:
+          "Designed and engineered as a high-density, authentic technical portfolio reflecting modern developer platform aesthetics (Vercel, Supabase, Linear). Includes an interactive Prompt Engineering Inspector comparing unstructured vs structured LLM prompts.",
+        problem:
+          "Most developer portfolios rely on generic templates, static claims, and exaggerated metrics with zero demonstrable interactive proof of skill or architectural understanding.",
+        solution:
+          "Engineered a modular React 19 Single Page Application featuring interactive client state inspectors, zero-404 HashRouter routing tailored for GitHub Pages, and an automated GitHub Actions deployment pipeline triggered on git push.",
+        architecture: {
+          client: "React 19 with Tailwind CSS v4 and responsive component tree",
+          routing: "React Router HashRouter ensuring seamless page reloads on static hosts",
+          ciCd: "GitHub Actions workflow running linting, build verification, and deployment to GitHub Pages"
+        },
+        engineeringDecisions: [
+          {
+            title: "Zero-404 Client-Side Routing",
+            detail:
+              "Utilized HashRouter to eliminate the classic GitHub Pages 404 issue on deep links and sub-routes without requiring complex 404.html redirect scripts."
+          },
+          {
+            title: "Interactive Prompt State Inspector",
+            detail:
+              "Built an interactive side-by-side prompt evaluator showing how structured JSON schemas and constraints prevent hallucination and format drift in production LLM pipelines."
+          },
+          {
+            title: "Automated Continuous Deployment",
+            detail:
+              "Configured a GitHub Actions workflow with strict environment token permissions (`pages: write`, `id-token: write`) to test and deploy builds automatically on every push."
           }
         ]
       }

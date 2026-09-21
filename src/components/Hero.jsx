@@ -1,8 +1,15 @@
-import React from 'react';
-import { ArrowRight, FileText, Database, Server, Cpu, Layers, Terminal, Sparkles } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowRight, FileText, Database, Server, Cpu, Layers, Terminal, Sparkles, Copy, Check } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 export const Hero = ({ onOpenResume }) => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText(portfolioData.personal.email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
   return (
     <section className="relative pt-12 pb-20 md:pt-20 md:pb-28 border-b border-[#222b38] overflow-hidden">
       {/* Subtle grid background pattern */}
@@ -66,6 +73,24 @@ export const Hero = ({ onOpenResume }) => {
               >
                 <FileText className="w-4 h-4 text-[#38bdf8]" />
                 View Resume
+              </button>
+
+              <button
+                onClick={handleCopyEmail}
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-md bg-[#12171f] text-[#8b949e] hover:text-[#f0f6fc] font-mono text-xs border border-[#222b38] hover:border-[#38bdf8]/40 transition-all cursor-pointer"
+                title="Copy email address to clipboard"
+              >
+                {copied ? (
+                  <>
+                    <Check className="w-3.5 h-3.5 text-emerald-400" />
+                    <span className="text-emerald-400 font-medium">Copied!</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-3.5 h-3.5 text-[#38bdf8]" />
+                    <span>Copy Email</span>
+                  </>
+                )}
               </button>
             </div>
 
