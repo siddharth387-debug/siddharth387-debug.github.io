@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, FileText, Database, Server, Cpu, Layers, Terminal, Sparkles, Copy, Check } from 'lucide-react';
+import { ArrowRight, FileText, Database, Server, Cpu, Layers, Terminal, Sparkles, Copy, Check, Zap, Award, Clock, Shield } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 export const Hero = ({ onOpenResume }) => {
@@ -191,6 +191,45 @@ export const Hero = ({ onOpenResume }) => {
             </div>
           </div>
 
+        </div>
+
+        {/* Engineering Metrics Ticker Bar */}
+        <div className="mt-12 pt-8 border-t border-[#222b38]/80 grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="p-4 rounded-xl bg-[#12171f]/80 border border-[#222b38] hover:border-[#38bdf8]/40 transition-all group">
+            <div className="flex items-center justify-between mb-1.5">
+              <span className="text-[11px] font-mono text-[#8b949e] uppercase tracking-wider">Inference Speed</span>
+              <Zap className="w-4 h-4 text-[#38bdf8] group-hover:scale-110 transition-transform" />
+            </div>
+            <div className="text-2xl sm:text-3xl font-bold font-mono text-[#f0f6fc]">~280ms</div>
+            <p className="text-xs text-[#8b949e] mt-1">Groq LLM endpoint latency in Rowl AI</p>
+          </div>
+
+          <div className="p-4 rounded-xl bg-[#12171f]/80 border border-[#222b38] hover:border-[#38bdf8]/40 transition-all group">
+            <div className="flex items-center justify-between mb-1.5">
+              <span className="text-[11px] font-mono text-[#8b949e] uppercase tracking-wider">Institutional Scale</span>
+              <Award className="w-4 h-4 text-emerald-400 group-hover:scale-110 transition-transform" />
+            </div>
+            <div className="text-2xl sm:text-3xl font-bold font-mono text-[#f0f6fc]">350+</div>
+            <p className="text-xs text-[#8b949e] mt-1">Faculty & staff governed in TCE Appraisal</p>
+          </div>
+
+          <div className="p-4 rounded-xl bg-[#12171f]/80 border border-[#222b38] hover:border-[#38bdf8]/40 transition-all group">
+            <div className="flex items-center justify-between mb-1.5">
+              <span className="text-[11px] font-mono text-[#8b949e] uppercase tracking-wider">Delivery Velocity</span>
+              <Clock className="w-4 h-4 text-amber-400 group-hover:scale-110 transition-transform" />
+            </div>
+            <div className="text-2xl sm:text-3xl font-bold font-mono text-[#f0f6fc]">7-Week</div>
+            <p className="text-xs text-[#8b949e] mt-1">From discovery to campus-wide production</p>
+          </div>
+
+          <div className="p-4 rounded-xl bg-[#12171f]/80 border border-[#222b38] hover:border-[#38bdf8]/40 transition-all group">
+            <div className="flex items-center justify-between mb-1.5">
+              <span className="text-[11px] font-mono text-[#8b949e] uppercase tracking-wider">Security Integrity</span>
+              <Shield className="w-4 h-4 text-[#38bdf8] group-hover:scale-110 transition-transform" />
+            </div>
+            <div className="text-2xl sm:text-3xl font-bold font-mono text-[#f0f6fc]">100%</div>
+            <p className="text-xs text-[#8b949e] mt-1">HMAC webhook verification & HTTP-only cookies</p>
+          </div>
         </div>
       </div>
     </section>
