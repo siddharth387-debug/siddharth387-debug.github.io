@@ -2,12 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ExternalLink, ArrowRight, Sparkles, CheckCircle2, Shield, Zap, Terminal, Activity, Lock, Award, Heart, Compass } from 'lucide-react';
 import { Github } from './Icons';
+import { SpotlightCard } from './SpotlightCard';
+import { audioSynth } from '../utils/audioSynth';
 import rowlAiScreenshot from '../assets/rowl-ai-preview.png';
 import tceAppraisalScreenshot from '../assets/tce-appraisal-preview.png';
 
 export const ProjectCard = ({ project, isFeatured = false }) => {
   const handleInspectPrompt = (e) => {
     e.preventDefault();
+    audioSynth.playClick();
     const el = document.getElementById('prompting');
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
@@ -15,13 +18,13 @@ export const ProjectCard = ({ project, isFeatured = false }) => {
   };
 
   return (
-    <div
+    <SpotlightCard
       data-cursor="CASE STUDY"
-      className={`rounded-2xl border transition-all duration-300 ${
+      className={`transition-all duration-300 ${
         isFeatured
           ? 'border-[#38bdf8]/40 bg-[#12171f] shadow-xl shadow-sky-950/20 hover:border-[#38bdf8]/70'
           : 'border-[#222b38] bg-[#12171f] hover:border-[#334155]'
-      } overflow-hidden flex flex-col justify-between group`}
+      } flex flex-col justify-between group`}
     >
       <div className="p-6 sm:p-8 space-y-6">
         
@@ -266,6 +269,6 @@ export const ProjectCard = ({ project, isFeatured = false }) => {
         </Link>
       </div>
 
-    </div>
+    </SpotlightCard>
   );
 };

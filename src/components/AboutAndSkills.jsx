@@ -1,6 +1,8 @@
 import React from 'react';
 import { User, Award, GraduationCap, Code2, Database, Cpu, Terminal, Sparkles, Layers, Server, Shield, CheckCircle2 } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
+import { SpotlightCard } from './SpotlightCard';
+import { GitHubTelemetry } from './GitHubTelemetry';
 
 export const AboutAndSkills = () => {
   const { personal, education, certifications } = portfolioData;
@@ -56,13 +58,11 @@ export const AboutAndSkills = () => {
             </span>
           </div>
 
-          {/* Asymmetrical Bento Grid */}
+          {/* Asymmetrical Bento Grid with Mouse-Following Spotlight */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             
             {/* Tile 1: Core Full-Stack Engine (Spans 2 columns on lg) */}
-            <div className="lg:col-span-2 p-6 rounded-2xl border border-[#222b38] bg-[#12171f]/90 hover:border-[#38bdf8]/40 transition-all group relative overflow-hidden flex flex-col justify-between">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-sky-500/5 rounded-full blur-3xl pointer-events-none group-hover:bg-sky-500/10 transition-colors"></div>
-              
+            <SpotlightCard className="lg:col-span-2 p-6 hover:border-[#38bdf8]/40 transition-all group relative flex flex-col justify-between">
               <div className="space-y-4 relative z-10">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2.5">
@@ -123,10 +123,10 @@ export const AboutAndSkills = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </SpotlightCard>
 
             {/* Tile 2: AI & LLM Systems (Span 1) */}
-            <div className="p-6 rounded-2xl border border-[#222b38] bg-[#12171f]/90 hover:border-[#38bdf8]/40 transition-all group relative overflow-hidden flex flex-col justify-between">
+            <SpotlightCard className="p-6 hover:border-[#38bdf8]/40 transition-all group relative flex flex-col justify-between">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2.5">
@@ -163,10 +163,10 @@ export const AboutAndSkills = () => {
                 <span>Speed Benchmark</span>
                 <span className="text-[#38bdf8] font-bold">~280ms Endpoint Latency</span>
               </div>
-            </div>
+            </SpotlightCard>
 
             {/* Tile 3: Relational & Document Data Persistence (Span 1) */}
-            <div className="p-6 rounded-2xl border border-[#222b38] bg-[#12171f]/90 hover:border-[#38bdf8]/40 transition-all group relative flex flex-col justify-between">
+            <SpotlightCard className="p-6 hover:border-[#38bdf8]/40 transition-all group relative flex flex-col justify-between">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2.5">
@@ -203,10 +203,10 @@ export const AboutAndSkills = () => {
                 <span>Data Integrity</span>
                 <span className="text-emerald-400">Zero Injection Vulnerability</span>
               </div>
-            </div>
+            </SpotlightCard>
 
             {/* Tile 4: Enterprise & Systems Engineering (Span 1) */}
-            <div className="p-6 rounded-2xl border border-[#222b38] bg-[#12171f]/90 hover:border-[#38bdf8]/40 transition-all group relative flex flex-col justify-between">
+            <SpotlightCard className="p-6 hover:border-[#38bdf8]/40 transition-all group relative flex flex-col justify-between">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2.5">
@@ -243,10 +243,10 @@ export const AboutAndSkills = () => {
                 <span>Scale Deployed</span>
                 <span className="text-amber-400 font-bold">350+ Users Governed</span>
               </div>
-            </div>
+            </SpotlightCard>
 
             {/* Tile 5: DevOps & Delivery Pipeline (Span 1) */}
-            <div className="p-6 rounded-2xl border border-[#222b38] bg-[#12171f]/90 hover:border-[#38bdf8]/40 transition-all group relative flex flex-col justify-between">
+            <SpotlightCard className="p-6 hover:border-[#38bdf8]/40 transition-all group relative flex flex-col justify-between">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2.5">
@@ -283,6 +283,11 @@ export const AboutAndSkills = () => {
                 <span>Automation</span>
                 <span className="text-[#38bdf8]">GitHub Actions CI/CD</span>
               </div>
+            </SpotlightCard>
+
+            {/* Tile 6: Live GitHub Activity Telemetry Card */}
+            <div className="md:col-span-2 lg:col-span-3">
+              <GitHubTelemetry />
             </div>
 
           </div>
