@@ -170,20 +170,19 @@ export const RecruiterChatbot = () => {
     let deliveryStatus = 'error';
 
     try {
+      const postData = new FormData();
+      postData.append('Name', formData.name);
+      postData.append('Email', formData.email);
+      postData.append('Message', formData.message);
+      postData.append('_subject', `[Portfolio Assistant] New Message from ${formData.name}`);
+      postData.append('_captcha', 'false');
+
       const res = await fetch('https://formsubmit.co/ajax/personalsiddharth387@gmail.com', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-          _subject: `New Portfolio Message from ${formData.name}`,
-          _captcha: 'false',
-          _template: 'table'
-        })
+        body: postData
       });
 
       const data = await res.json().catch(() => ({}));

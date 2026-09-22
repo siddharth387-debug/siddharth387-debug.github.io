@@ -44,21 +44,20 @@ export const Contact = ({ onOpenResume }) => {
     setSubmitStatus(null);
 
     try {
+      const postData = new FormData();
+      postData.append('Name', formData.name);
+      postData.append('Email', formData.email);
+      postData.append('Purpose', formData.purpose);
+      postData.append('Message', formData.message);
+      postData.append('_subject', `[Portfolio DM] ${formData.purpose} from ${formData.name}`);
+      postData.append('_captcha', 'false');
+
       const response = await fetch(`https://formsubmit.co/ajax/${email}`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          _subject: `[Portfolio DM] ${formData.purpose} from ${formData.name}`,
-          purpose: formData.purpose,
-          message: formData.message,
-          _captcha: 'false',
-          _template: 'table'
-        })
+        body: postData
       });
 
       const data = await response.json().catch(() => ({}));
