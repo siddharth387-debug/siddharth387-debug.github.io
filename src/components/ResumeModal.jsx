@@ -53,7 +53,7 @@ export const ResumeModal = ({ isOpen, onClose }) => {
             </p>
             <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 text-xs font-mono text-[#8b949e] pt-1">
               <span className="flex items-center gap-1">
-                <MapPin className="w-3.5 h-3.5" /> Madurai, Tamil Nadu, India
+                <MapPin className="w-3.5 h-3.5" /> Tamil Nadu, India · Remote / Chennai / Relocation Anywhere
               </span>
               <span className="flex items-center gap-1">
                 <Mail className="w-3.5 h-3.5" /> personalsiddharth387@gmail.com

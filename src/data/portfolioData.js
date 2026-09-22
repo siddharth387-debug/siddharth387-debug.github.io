@@ -2,11 +2,13 @@ export const portfolioData = {
   personal: {
     name: "Siddharth K",
     title: "AI-Assisted Web Developer",
-    location: "Madurai, Tamil Nadu, India",
+    location: "Tamil Nadu, India",
+    availability: "Available for Full-Stack Roles (Remote · Chennai · Anywhere)",
+    workPreference: "Remote · Chennai · Relocation Anywhere",
     email: "personalsiddharth387@gmail.com",
     github: "https://github.com/siddharth387-debug",
     linkedin: "https://www.linkedin.com/in/siddharth-k-b0a118340/",
-    status: "Open to opportunities",
+    status: "Open to opportunities (Remote / Chennai / Anywhere)",
 
     supportingStatement:
       "I build full-stack web applications and integrate LLM-powered capabilities to turn conventional software into intelligent experiences.",

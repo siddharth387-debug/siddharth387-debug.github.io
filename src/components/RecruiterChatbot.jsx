@@ -60,9 +60,9 @@ export const RecruiterChatbot = () => {
         text: "The TCE Faculty Appraisal Management System was engineered for Thiagarajar College of Engineering. It digitizes annual faculty performance for 350+ faculty with 4-tier Role-Based Access Control, a 9-section accreditation rubric, and automated PDF dossier generation."
       };
     }
-    if (q.includes('hire') || q.includes('job') || q.includes('role') || q.includes('open') || q.includes('opportunity') || q.includes('intern') || q.includes('work') || q.includes('available')) {
+    if (q.includes('hire') || q.includes('job') || q.includes('role') || q.includes('open') || q.includes('opportunity') || q.includes('intern') || q.includes('work') || q.includes('available') || q.includes('location') || q.includes('remote') || q.includes('chennai')) {
       return {
-        text: "Yes! Siddharth is actively open for Full-Stack, Frontend, and AI-assisted web engineering roles and internships. He is pursuing his MCA at TCE Madurai with an 8.47 CGPA. You can send him a direct message right here by clicking '✉️ Send Message'!",
+        text: "Yes! Siddharth is actively open for Full-Stack, Frontend, and AI-assisted web engineering opportunities. He is strongly focused on Remote roles and positions in Chennai, and is completely flexible to relocate anywhere. He is pursuing his MCA at TCE Madurai (8.47 CGPA).",
         suggestDm: true,
         detectedMessage: input
       };
@@ -105,7 +105,7 @@ export const RecruiterChatbot = () => {
       answerText = "Engineered for Thiagarajar College of Engineering, it features a 4-tier governance hierarchy (Principal, Registrar, HoD, Faculty) across a 9-section accreditation rubric (200 marks). It includes automated server-side PDF generation with digital audit seals.";
     } else if (type === 'roles') {
       questionText = "Is Siddharth open to opportunities?";
-      answerText = "Yes! Siddharth is actively pursuing his MCA at Thiagarajar College of Engineering (CGPA: 8.47) and is available for Full-Stack, Frontend, and AI-assisted web development internships and full-time roles.";
+      answerText = "Yes! Siddharth is actively open for Full-Stack, Frontend, and AI-assisted web development opportunities. He is strongly focused on Remote roles and Chennai, and is flexible to relocate anywhere. He is pursuing his MCA at TCE Madurai (8.47 CGPA).";
     }
 
     setMessages((prev) => [

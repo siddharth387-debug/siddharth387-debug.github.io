@@ -229,11 +229,19 @@ export const Contact = ({ onOpenResume }) => {
               {/* Status & Response SLA Card */}
               <div className="p-5 rounded-xl border border-[#222b38]/70 bg-[#0d121a] space-y-2.5 font-mono text-xs">
                 <div className="flex items-center justify-between">
-                  <span className="text-[#8b949e]">Current Availability</span>
+                  <span className="text-[#8b949e]">Current Status</span>
                   <span className="text-emerald-400 font-bold flex items-center gap-1">
                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    Available
+                    Actively Interviewing
                   </span>
+                </div>
+                <div className="flex items-center justify-between border-t border-[#222b38]/40 pt-2">
+                  <span className="text-[#8b949e]">Work Location</span>
+                  <span className="text-emerald-400 font-semibold">Remote & Chennai / Anywhere</span>
+                </div>
+                <div className="flex items-center justify-between border-t border-[#222b38]/40 pt-2">
+                  <span className="text-[#8b949e]">Relocation</span>
+                  <span className="text-[#f0f6fc]">Flexible / Open Anywhere</span>
                 </div>
                 <div className="flex items-center justify-between border-t border-[#222b38]/40 pt-2">
                   <span className="text-[#8b949e]">Response SLA</span>

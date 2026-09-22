@@ -100,10 +100,12 @@ export function verifyPaymentWebhook(rawBody: string, signature: string): boolea
             
             {/* Context Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#12171f] border border-[#222b38] text-xs font-mono text-[#8b949e]">
-              <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
-              <span>Available for Full-Stack & AI-Assisted Roles</span>
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>Available for Full-Stack Roles</span>
               <span className="text-[#38bdf8]">/</span>
-              <span>{portfolioData.personal.location}</span>
+              <span className="text-[#38bdf8] font-semibold">Remote</span>
+              <span>·</span>
+              <span>Chennai / Anywhere</span>
             </div>
 
             {/* Primary Title */}

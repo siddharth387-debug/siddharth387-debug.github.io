@@ -22,8 +22,8 @@ export const AboutAndSkills = () => {
               About Me
             </h2>
             <div className="pt-2 text-xs font-mono text-[#8b949e] space-y-1.5 border-l-2 border-[#222b38] pl-3">
-              <div>Based in {personal.location}</div>
-              <div>MCA Candidate @ TCE Madurai</div>
+              <div>Based in Tamil Nadu · <span className="text-[#38bdf8]">Remote</span> & <span className="text-[#f0f6fc]">Chennai / Anywhere</span></div>
+              <div>MCA Candidate @ TCE Madurai (8.47 CGPA)</div>
               <div>Full-Stack + AI-Assisted Web Development</div>
             </div>
           </div>
