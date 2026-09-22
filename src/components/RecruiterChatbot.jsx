@@ -161,6 +161,12 @@ export const RecruiterChatbot = () => {
       `Hi Siddharth,\n\n${formData.message}\n\nFrom: ${formData.name}\nEmail: ${formData.email}`
     )}`;
 
+    const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=personalsiddharth387@gmail.com&su=${encodeURIComponent(
+      `Portfolio Message from ${formData.name}`
+    )}&body=${encodeURIComponent(
+      `Hi Siddharth,\n\n${formData.message}\n\nFrom: ${formData.name}\nEmail: ${formData.email}`
+    )}`;
+
     let deliveryStatus = 'error';
 
     try {
@@ -199,9 +205,9 @@ export const RecruiterChatbot = () => {
       if (deliveryStatus === 'success') {
         botText = `✓ Your message has been delivered directly to Siddharth's inbox (personalsiddharth387@gmail.com)! He typically responds within 24 hours.`;
       } else if (deliveryStatus === 'activation_pending') {
-        botText = `⚠️ FormSubmit one-time email activation is pending for the developer. To make sure your note is delivered right away, please click "Open in Mail App" or copy the message below!`;
+        botText = `⚠️ FormSubmit one-time email activation is pending for the developer. To make sure your note is delivered right away, please click "Open in Gmail" or copy the message below!`;
       } else {
-        botText = `⚠️ Direct web submission encountered a network block. Please click "Open in Mail App" below to send your note directly via your email client.`;
+        botText = `⚠️ Direct web submission encountered a network block. Please click "Open in Gmail" below to send your note directly.`;
       }
 
       setMessages((prev) => [
@@ -216,6 +222,7 @@ export const RecruiterChatbot = () => {
           isConfirmation: true,
           statusType: deliveryStatus,
           mailtoUrl: mailtoLink,
+          gmailWebUrl: gmailWebUrl,
           copyContent: `From: ${formData.name} <${formData.email}>\nMessage:\n${formData.message}`
         }
       ]);
@@ -349,14 +356,25 @@ export const RecruiterChatbot = () => {
                             </span>
                           )}
 
-                          <div className="flex items-center gap-2">
+                          <div className="flex flex-wrap items-center gap-2">
+                            {m.gmailWebUrl && (
+                              <a
+                                href={m.gmailWebUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={() => audioSynth.playClick()}
+                                className="text-[#38bdf8] hover:underline flex items-center gap-1 font-mono font-bold"
+                              >
+                                Gmail (Web) <ArrowUpRight className="w-2.5 h-2.5" />
+                              </a>
+                            )}
                             {m.mailtoUrl && (
                               <a
                                 href={m.mailtoUrl}
                                 onClick={() => audioSynth.playClick()}
-                                className="text-[#38bdf8] hover:underline flex items-center gap-1 font-mono"
+                                className="text-[#8b949e] hover:text-[#f0f6fc] hover:underline flex items-center gap-1 font-mono"
                               >
-                                Open in Mail <ArrowUpRight className="w-2.5 h-2.5" />
+                                Mail App <ArrowUpRight className="w-2.5 h-2.5" />
                               </a>
                             )}
                             {m.copyContent && (
@@ -512,14 +530,26 @@ export const RecruiterChatbot = () => {
                 </button>
 
                 <div className="flex items-center justify-between text-[10px] font-mono text-[#8b949e]">
-                  <span>Direct mailto backup:</span>
-                  <a
-                    href={`mailto:personalsiddharth387@gmail.com?subject=Portfolio%20Inquiry&body=Hi%20Siddharth,%0D%0A%0D%0A`}
-                    onClick={() => audioSynth.playClick()}
-                    className="text-[#38bdf8] hover:underline flex items-center gap-1"
-                  >
-                    Open in Mail App <ArrowUpRight className="w-2.5 h-2.5" />
-                  </a>
+                  <span>Direct mail backup:</span>
+                  <div className="flex items-center gap-2">
+                    <a
+                      href="https://mail.google.com/mail/?view=cm&fs=1&to=personalsiddharth387@gmail.com&su=Portfolio%20Inquiry"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => audioSynth.playClick()}
+                      className="text-[#38bdf8] hover:underline flex items-center gap-1 font-bold"
+                    >
+                      Gmail (Web) <ArrowUpRight className="w-2.5 h-2.5" />
+                    </a>
+                    <span>•</span>
+                    <a
+                      href={`mailto:personalsiddharth387@gmail.com?subject=Portfolio%20Inquiry&body=Hi%20Siddharth,%0D%0A%0D%0A`}
+                      onClick={() => audioSynth.playClick()}
+                      className="hover:text-[#f0f6fc] hover:underline flex items-center gap-1"
+                    >
+                      Mail App <ArrowUpRight className="w-2.5 h-2.5" />
+                    </a>
+                  </div>
                 </div>
               </div>
             </form>

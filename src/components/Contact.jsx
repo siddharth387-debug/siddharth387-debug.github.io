@@ -84,6 +84,12 @@ export const Contact = ({ onOpenResume }) => {
     `Hi Siddharth,\n\n${formData.message}\n\nFrom: ${formData.name}\nEmail: ${formData.email}\nPurpose: ${formData.purpose}`
   )}`;
 
+  const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(
+    `[Portfolio DM] ${formData.purpose} from ${formData.name || 'Visitor'}`
+  )}&body=${encodeURIComponent(
+    `Hi Siddharth,\n\n${formData.message}\n\nFrom: ${formData.name}\nEmail: ${formData.email}\nPurpose: ${formData.purpose}`
+  )}`;
+
   return (
     <div id="contact" className="space-y-16">
       
@@ -301,12 +307,21 @@ export const Contact = ({ onOpenResume }) => {
                         </div>
                         <div className="flex flex-wrap items-center gap-2 pt-1">
                           <a
-                            href={mailtoUrl}
+                            href={gmailWebUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             onClick={() => audioSynth.playClick()}
                             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-amber-400 text-[#090d12] font-bold text-xs hover:bg-amber-300 transition-colors"
                           >
                             <Mail className="w-3.5 h-3.5" />
-                            <span>Open in Mail App</span>
+                            <span>Open in Gmail (Web)</span>
+                          </a>
+                          <a
+                            href={mailtoUrl}
+                            onClick={() => audioSynth.playClick()}
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#18202b] text-amber-200 border border-amber-400/40 text-xs hover:text-white transition-colors"
+                          >
+                            <span>Mail App</span>
                           </a>
                           <button
                             type="button"
@@ -326,17 +341,26 @@ export const Contact = ({ onOpenResume }) => {
                         <div className="flex items-start gap-2">
                           <AlertCircle className="w-4 h-4 text-rose-400 shrink-0 mt-0.5" />
                           <p className="text-[11px] leading-relaxed">
-                            Direct transmission encountered a network block. Click below to launch your email client with your message ready:
+                            Direct transmission encountered a network block. Click below to send directly via Gmail or your mail app:
                           </p>
                         </div>
                         <div className="flex flex-wrap items-center gap-2 pt-1">
                           <a
-                            href={mailtoUrl}
+                            href={gmailWebUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             onClick={() => audioSynth.playClick()}
                             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-rose-500 text-white font-bold text-xs hover:bg-rose-400 transition-colors"
                           >
                             <Mail className="w-3.5 h-3.5" />
-                            <span>Send via Email Client</span>
+                            <span>Open in Gmail (Web)</span>
+                          </a>
+                          <a
+                            href={mailtoUrl}
+                            onClick={() => audioSynth.playClick()}
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#18202b] text-rose-200 border border-rose-400/40 text-xs hover:text-white transition-colors"
+                          >
+                            <span>Mail App</span>
                           </a>
                           <button
                             type="button"
