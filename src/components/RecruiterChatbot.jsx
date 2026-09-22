@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageSquare, X, Send, Bot, CheckCircle2, Sparkles, Mail, User, AlertCircle, ArrowUpRight } from 'lucide-react';
+import { MessageSquare, X, Send, Bot, CheckCircle2, Sparkles, Mail, User, AlertCircle, ArrowUpRight, Copy, Check, RefreshCw } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
+import { audioSynth } from '../utils/audioSynth';
 
 export const RecruiterChatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +19,7 @@ export const RecruiterChatbot = () => {
   // Direct Message Form State
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
+  const [copiedDraftIdx, setCopiedDraftIdx] = useState(null);
 
   const messagesEndRef = useRef(null);
 
@@ -32,31 +33,64 @@ export const RecruiterChatbot = () => {
 
   const getBotResponse = (input) => {
     const q = input.toLowerCase().trim();
+    const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/;
+    const foundEmail = input.match(emailRegex);
+
+    if (foundEmail) {
+      return {
+        text: `I noticed your email address (${foundEmail[0]}). Would you like to dispatch your note directly to Siddharth's inbox right now?`,
+        suggestDm: true,
+        detectedEmail: foundEmail[0],
+        detectedMessage: input
+      };
+    }
+
     if (q.includes('stack') || q.includes('skill') || q.includes('tech') || q.includes('technolog') || q.includes('framework')) {
-      return "Siddharth specializes in the MERN Stack (React 19, Node.js, Express, MongoDB) alongside PHP & MySQL. He is hands-on with JWT in HTTP-only cookies, normalized 3NF database schemas, REST APIs, and low-latency LLM inference via the Groq Cloud API (~280ms).";
+      return {
+        text: "Siddharth specializes in the MERN Stack (React 19, Node.js, Express, MongoDB) alongside PHP & MySQL. He is hands-on with JWT in HTTP-only cookies, normalized 3NF database schemas, REST APIs, and low-latency LLM inference via the Groq Cloud API (~280ms)."
+      };
     }
     if (q.includes('rowl') || q.includes('mental') || q.includes('sera') || q.includes('psycholog')) {
-      return "Rowl AI is a full-stack mental wellness platform engineered with the MERN stack. It integrates the Groq Cloud API to power Sera AI, an empathetic companion built with defensive prompt boundaries and Razorpay payment webhooks. Deployed live at rowl-ai-pink.vercel.app.";
+      return {
+        text: "Rowl AI is a full-stack mental wellness platform engineered with the MERN stack. It integrates the Groq Cloud API to power Sera AI, an empathetic companion built with defensive prompt boundaries and Razorpay payment webhooks. Deployed live at rowl-ai-pink.vercel.app."
+      };
     }
     if (q.includes('appraisal') || q.includes('tce') || q.includes('college') || q.includes('faculty')) {
-      return "The TCE Faculty Appraisal Management System was engineered for Thiagarajar College of Engineering. It digitizes annual faculty performance for 350+ faculty with 4-tier Role-Based Access Control, a 9-section accreditation rubric, and automated PDF dossier generation.";
+      return {
+        text: "The TCE Faculty Appraisal Management System was engineered for Thiagarajar College of Engineering. It digitizes annual faculty performance for 350+ faculty with 4-tier Role-Based Access Control, a 9-section accreditation rubric, and automated PDF dossier generation."
+      };
     }
     if (q.includes('hire') || q.includes('job') || q.includes('role') || q.includes('open') || q.includes('opportunity') || q.includes('intern') || q.includes('work') || q.includes('available')) {
-      return "Yes! Siddharth is actively open for Full-Stack, Frontend, and AI-assisted web engineering roles and internships. He is pursuing his MCA at TCE Madurai with an 8.47 CGPA. You can send him a direct message right here by clicking '✉️ Send Message'!";
+      return {
+        text: "Yes! Siddharth is actively open for Full-Stack, Frontend, and AI-assisted web engineering roles and internships. He is pursuing his MCA at TCE Madurai with an 8.47 CGPA. You can send him a direct message right here by clicking '✉️ Send Message'!",
+        suggestDm: true,
+        detectedMessage: input
+      };
     }
     if (q.includes('contact') || q.includes('email') || q.includes('reach') || q.includes('phone') || q.includes('message')) {
-      return "You can reach Siddharth directly at personalsiddharth387@gmail.com, connect on LinkedIn (linkedin.com/in/siddharth-k-b0a118340), or click '✉️ Send Message' above to send a note directly to his inbox.";
+      return {
+        text: "You can reach Siddharth directly at personalsiddharth387@gmail.com, connect on LinkedIn (linkedin.com/in/siddharth-k-b0a118340), or click '✉️ Send Message' above to send a note directly to his inbox.",
+        suggestDm: true,
+        detectedMessage: input
+      };
     }
     if (q.includes('education') || q.includes('degree') || q.includes('cgpa') || q.includes('college') || q.includes('school')) {
-      return "Siddharth is pursuing his Master of Computer Applications (MCA) at Thiagarajar College of Engineering (2025–2027) with a CGPA of 8.47 / 10.0. He completed his B.Sc. in Information Technology with a 7.62 CGPA.";
+      return {
+        text: "Siddharth is pursuing his Master of Computer Applications (MCA) at Thiagarajar College of Engineering (2025–2027) with a CGPA of 8.47 / 10.0. He completed his B.Sc. in Information Technology with a 7.62 CGPA."
+      };
     }
     if (q.includes('hello') || q.includes('hi') || q.includes('hey')) {
-      return "Hello! Great to connect with you. Ask me anything about Siddharth's engineering projects, technical stack, or feel free to send him a direct message!";
+      return {
+        text: "Hello! Great to connect with you. Ask me anything about Siddharth's engineering projects, technical stack, or feel free to send him a direct message!"
+      };
     }
-    return `Thanks for your inquiry! Siddharth builds production full-stack web applications and integrates practical LLM inference. Would you like to know about his projects (Rowl AI, TCE Appraisal), his tech stack, or send him a direct message?`;
+    return {
+      text: `Thanks for your inquiry! Siddharth builds production full-stack web applications and integrates practical LLM inference. Would you like to know about his projects (Rowl AI, TCE Appraisal), his tech stack, or send him a direct message?`
+    };
   };
 
   const handleQuickQuestion = (type) => {
+    audioSynth.playClick();
     let questionText = '';
     let answerText = '';
 
@@ -85,6 +119,7 @@ export const RecruiterChatbot = () => {
     e.preventDefault();
     if (!userInput.trim()) return;
 
+    audioSynth.playPop();
     const query = userInput.trim();
     setUserInput('');
 
@@ -93,16 +128,32 @@ export const RecruiterChatbot = () => {
     setMessages((prev) => [
       ...prev,
       { sender: 'user', text: query },
-      { sender: 'bot', text: botReply }
+      { 
+        sender: 'bot', 
+        text: botReply.text,
+        suggestDm: botReply.suggestDm,
+        detectedEmail: botReply.detectedEmail,
+        detectedMessage: botReply.detectedMessage
+      }
     ]);
+  };
+
+  const handleSwitchToDmFromChat = (emailVal, msgVal) => {
+    audioSynth.playClick();
+    setFormData((prev) => ({
+      ...prev,
+      email: emailVal || prev.email,
+      message: msgVal || prev.message
+    }));
+    setMode('email-form');
   };
 
   const handleSubmitMessage = async (e) => {
     e.preventDefault();
     if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) return;
 
+    audioSynth.playPop();
     setIsSubmitting(true);
-    setSubmitStatus(null);
 
     const mailtoLink = `mailto:personalsiddharth387@gmail.com?subject=${encodeURIComponent(
       `Portfolio Message from ${formData.name}`
@@ -110,9 +161,10 @@ export const RecruiterChatbot = () => {
       `Hi Siddharth,\n\n${formData.message}\n\nFrom: ${formData.name}\nEmail: ${formData.email}`
     )}`;
 
+    let deliveryStatus = 'error';
+
     try {
-      // Send message via FormSubmit AJAX endpoint (designed for static frontends)
-      await fetch('https://formsubmit.co/ajax/personalsiddharth387@gmail.com', {
+      const res = await fetch('https://formsubmit.co/ajax/personalsiddharth387@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -127,13 +179,31 @@ export const RecruiterChatbot = () => {
           _template: 'table'
         })
       });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (data.success === 'true' || data.success === true) {
+        deliveryStatus = 'success';
+      } else if (data.message && data.message.toLowerCase().includes('activation')) {
+        deliveryStatus = 'activation_pending';
+      } else {
+        deliveryStatus = 'error';
+      }
     } catch (err) {
       console.warn('Direct endpoint transmission notice:', err);
+      deliveryStatus = 'error';
     } finally {
       setIsSubmitting(false);
-      setSubmitStatus('success');
 
-      // Add user message and developer confirmation to conversation log
+      let botText = '';
+      if (deliveryStatus === 'success') {
+        botText = `✓ Your message has been delivered directly to Siddharth's inbox (personalsiddharth387@gmail.com)! He typically responds within 24 hours.`;
+      } else if (deliveryStatus === 'activation_pending') {
+        botText = `⚠️ FormSubmit one-time email activation is pending for the developer. To make sure your note is delivered right away, please click "Open in Mail App" or copy the message below!`;
+      } else {
+        botText = `⚠️ Direct web submission encountered a network block. Please click "Open in Mail App" below to send your note directly via your email client.`;
+      }
+
       setMessages((prev) => [
         ...prev,
         {
@@ -142,9 +212,11 @@ export const RecruiterChatbot = () => {
         },
         {
           sender: 'bot',
-          text: `✓ Your message has been sent to the developer (Siddharth) successfully! He has received it at personalsiddharth387@gmail.com and will get back to you shortly.`,
+          text: botText,
           isConfirmation: true,
-          mailtoUrl: mailtoLink
+          statusType: deliveryStatus,
+          mailtoUrl: mailtoLink,
+          copyContent: `From: ${formData.name} <${formData.email}>\nMessage:\n${formData.message}`
         }
       ]);
 
@@ -153,12 +225,22 @@ export const RecruiterChatbot = () => {
     }
   };
 
+  const handleCopyConfirmation = (content, idx) => {
+    audioSynth.playClick();
+    navigator.clipboard.writeText(content);
+    setCopiedDraftIdx(idx);
+    setTimeout(() => setCopiedDraftIdx(null), 2000);
+  };
+
   return (
     <aside aria-label="Portfolio Assistant" className="fixed bottom-5 right-5 z-50 font-sans">
       {/* Floating Toggle Button */}
       {!isOpen && (
         <button
-          onClick={() => setIsOpen(true)}
+          onClick={() => {
+            audioSynth.playClick();
+            setIsOpen(true);
+          }}
           data-cursor="CHAT"
           className="group flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-[#12171f] hover:bg-[#18202b] text-[#f0f6fc] border border-[#222b38] hover:border-[#38bdf8]/50 shadow-2xl transition-all duration-200 cursor-pointer"
           title="Open Portfolio Assistant & Direct Messaging"
@@ -196,7 +278,10 @@ export const RecruiterChatbot = () => {
 
             <div className="flex items-center gap-1.5">
               <button
-                onClick={() => setMode(mode === 'chat' ? 'email-form' : 'chat')}
+                onClick={() => {
+                  audioSynth.playClick();
+                  setMode(mode === 'chat' ? 'email-form' : 'chat');
+                }}
                 className={`px-2.5 py-1 rounded-md text-[10px] font-mono transition-colors cursor-pointer ${
                   mode === 'email-form'
                     ? 'bg-[#38bdf8] text-[#090d12] font-bold'
@@ -207,7 +292,10 @@ export const RecruiterChatbot = () => {
               </button>
 
               <button
-                onClick={() => setIsOpen(false)}
+                onClick={() => {
+                  audioSynth.playClick();
+                  setIsOpen(false);
+                }}
                 className="p-1 rounded text-[#8b949e] hover:text-[#f0f6fc] hover:bg-[#18202b] transition-colors cursor-pointer"
                 title="Close assistant"
               >
@@ -235,18 +323,52 @@ export const RecruiterChatbot = () => {
                     >
                       {m.text}
 
-                      {/* Confirmation card when message is sent to developer */}
-                      {m.isConfirmation && m.mailtoUrl && (
-                        <div className="mt-2.5 pt-2 border-t border-[#222b38] flex items-center justify-between gap-2 text-[10px]">
-                          <span className="text-emerald-400 font-bold flex items-center gap-1">
-                            <CheckCircle2 className="w-3 h-3" /> Delivered
-                          </span>
-                          <a
-                            href={m.mailtoUrl}
-                            className="text-[#38bdf8] hover:underline flex items-center gap-1 font-mono"
+                      {/* Suggest DM quick trigger if user expressed inquiry intent */}
+                      {m.suggestDm && (
+                        <div className="mt-2.5 pt-2 border-t border-[#222b38] flex items-center justify-between gap-2">
+                          <button
+                            onClick={() => handleSwitchToDmFromChat(m.detectedEmail, m.detectedMessage)}
+                            className="px-2.5 py-1 rounded bg-[#38bdf8]/15 hover:bg-[#38bdf8]/25 text-[#38bdf8] border border-[#38bdf8]/40 font-mono text-[10px] flex items-center gap-1 transition-colors cursor-pointer"
                           >
-                            Open in Mail App <ArrowUpRight className="w-2.5 h-2.5" />
-                          </a>
+                            <Mail className="w-3 h-3" />
+                            <span>✉️ Dispatch Note to Inbox</span>
+                          </button>
+                        </div>
+                      )}
+
+                      {/* Confirmation card when message is sent to developer */}
+                      {m.isConfirmation && (
+                        <div className="mt-2.5 pt-2 border-t border-[#222b38] flex flex-wrap items-center justify-between gap-2 text-[10px]">
+                          {m.statusType === 'success' ? (
+                            <span className="text-emerald-400 font-bold flex items-center gap-1 font-mono">
+                              <CheckCircle2 className="w-3 h-3" /> Delivered to Inbox
+                            </span>
+                          ) : (
+                            <span className="text-amber-400 font-bold flex items-center gap-1 font-mono">
+                              <AlertCircle className="w-3 h-3" /> Direct Fallback Ready
+                            </span>
+                          )}
+
+                          <div className="flex items-center gap-2">
+                            {m.mailtoUrl && (
+                              <a
+                                href={m.mailtoUrl}
+                                onClick={() => audioSynth.playClick()}
+                                className="text-[#38bdf8] hover:underline flex items-center gap-1 font-mono"
+                              >
+                                Open in Mail <ArrowUpRight className="w-2.5 h-2.5" />
+                              </a>
+                            )}
+                            {m.copyContent && (
+                              <button
+                                onClick={() => handleCopyConfirmation(m.copyContent, idx)}
+                                className="text-[#8b949e] hover:text-[#f0f6fc] flex items-center gap-1 font-mono cursor-pointer"
+                              >
+                                {copiedDraftIdx === idx ? <Check className="w-2.5 h-2.5 text-emerald-400" /> : <Copy className="w-2.5 h-2.5" />}
+                                <span>{copiedDraftIdx === idx ? 'Copied' : 'Copy'}</span>
+                              </button>
+                            )}
+                          </div>
                         </div>
                       )}
                     </div>
@@ -306,7 +428,10 @@ export const RecruiterChatbot = () => {
 
                 {/* Direct Message CTA banner */}
                 <button
-                  onClick={() => setMode('email-form')}
+                  onClick={() => {
+                    audioSynth.playClick();
+                    setMode('email-form');
+                  }}
                   className="w-full py-1 text-[11px] font-mono text-[#8b949e] hover:text-[#38bdf8] flex items-center justify-center gap-1 transition-colors cursor-pointer"
                 >
                   <Mail className="w-3 h-3 text-[#38bdf8]" />
@@ -374,7 +499,10 @@ export const RecruiterChatbot = () => {
                   className="w-full py-2.5 px-4 rounded-lg bg-[#38bdf8] hover:bg-[#7dd3fc] text-[#090d12] font-mono font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer disabled:opacity-50"
                 >
                   {isSubmitting ? (
-                    <span>Dispatching to Developer...</span>
+                    <span className="flex items-center gap-1.5">
+                      <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                      Dispatching to Developer...
+                    </span>
                   ) : (
                     <>
                       <Send className="w-3.5 h-3.5" />
@@ -387,6 +515,7 @@ export const RecruiterChatbot = () => {
                   <span>Direct mailto backup:</span>
                   <a
                     href={`mailto:personalsiddharth387@gmail.com?subject=Portfolio%20Inquiry&body=Hi%20Siddharth,%0D%0A%0D%0A`}
+                    onClick={() => audioSynth.playClick()}
                     className="text-[#38bdf8] hover:underline flex items-center gap-1"
                   >
                     Open in Mail App <ArrowUpRight className="w-2.5 h-2.5" />
