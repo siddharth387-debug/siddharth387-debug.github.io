@@ -10,7 +10,7 @@ export const AiWorkflow = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-12">
         
         {/* Section Header */}
-        <div className="space-y-3 max-w-3xl">
+        <div data-gsap="section-header" className="space-y-3 max-w-3xl">
           <div className="flex items-center gap-2 text-xs font-mono text-[#38bdf8]">
             <Cpu className="w-4 h-4" />
             <span>DEVELOPMENT PROCESS</span>
@@ -25,10 +25,11 @@ export const AiWorkflow = () => {
         </div>
 
         {/* 10-Step Sequential Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5 font-mono text-xs">
+        <div data-gsap="stagger-grid" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5 font-mono text-xs">
           {steps.map((item, idx) => (
             <div
               key={item.step}
+              data-gsap-item
               className="p-4 rounded-lg bg-[#12171f] border border-[#222b38] hover:border-[#38bdf8]/40 transition-all flex flex-col justify-between space-y-3 relative group"
             >
               <div className="flex items-center justify-between">

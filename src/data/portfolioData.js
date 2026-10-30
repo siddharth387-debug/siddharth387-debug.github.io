@@ -115,44 +115,44 @@ export const portfolioData = {
         "RBAC",
         "LLM API"
       ],
-      liveUrl: "https://tce-appraisal.vercel.app/",
+      liveUrl: "https://tce-apprisal.vercel.app/",
       githubUrl: "https://github.com/siddharth387-debug/Tce-apprisal",
       filterTags: ["all", "ai", "mern"],
-      timeline: "2026 – Present (Active Academic Project)",
+      timeline: "2026 – Present (Active Institutional System)",
       caseStudy: {
         overview:
           "An institutional academic platform engineered to modernize faculty performance appraisal, scholarly output tracking, and administrative review workflows at Thiagarajar College of Engineering.",
         problem:
           "Annual faculty appraisal in higher education traditionally relies on cumbersome paper dossiers and disconnected spreadsheets. Heads of Departments (HODs) face overwhelming administrative burdens reviewing dozens of qualitative self-appraisals, tracking research metrics, and compiling standardized institutional audit reports.",
         solution:
-          "Developed a unified MERN platform featuring role-based workflows: Faculty submit structured achievements (teaching, publications, student mentorship); HODs evaluate and score submissions; and an integrated LLM synthesizes qualitative accomplishments into concise, objective executive summaries paired with automated PDF document export.",
+          "Developed a unified MERN platform featuring 4-tier role-based workflows (Faculty, HoD, Registrar, Principal) across a 9-section accreditation rubric (200 marks), hardened JWT leadership guards on review endpoints, custom multi-year appraisal cycles, and automated server-side PDF dossier generation with digital audit seals.",
         architecture: {
-          client: "React.js role-gated dashboards (Faculty Submission, HOD Evaluation, Admin Audit)",
-          backend: "Express.js REST API with JWT role-based access control and approval state machines",
-          database: "MongoDB storing appraisal submissions, scoring rubrics, and historical records",
-          documentEngine: "Server-side PDF generation module rendering institutional appraisal dossiers",
+          client: "React.js role-gated dashboards (Faculty Submission, HOD Evaluation, Registrar & Principal Audit)",
+          backend: "Express.js REST API with hardened JWT role-based access control and leadership authorization guards",
+          database: "MongoDB storing multi-year appraisal submissions, 9-section scoring rubrics (including Utility Patents & Section 9.2/9.3 metrics), and audit trails",
+          documentEngine: "Server-side PDF generation module rendering institutional appraisal dossiers with digital verification seals",
           aiLayer: "Backend LLM integration providing objective accomplishment synthesis and draft evaluation summaries"
         },
         aiWorkflow: {
-          step1: "Faculty submits multi-category self-appraisal with teaching logs and publication metrics",
-          step2: "Backend validates structured inputs and constructs a prompt containing achievements against institutional benchmarks",
+          step1: "Faculty submits multi-category 9-section self-appraisal (200 marks) with teaching logs, patents, and publication metrics",
+          step2: "Backend enforces JWT & leadership role guards and validates structured inputs against institutional rubrics",
           step3: "LLM evaluates narrative clarity and generates a neutral, objective executive summary draft",
-          step4: "System validates generated summary against safety filters and returns draft to HOD interface",
-          step5: "HOD reviews, overrides or approves the evaluation before committing it to the final appraisal record"
+          step4: "System validates generated summary against safety filters and routes dossier through HoD → Registrar → Principal pipeline",
+          step5: "Leadership reviews, overrides, or approves the evaluation before generating the digitally sealed PDF appraisal dossier"
         },
         engineeringDecisions: [
           {
-            title: "Multi-Role RBAC Workflow",
+            title: "4-Tier RBAC & Leadership Endpoint Guards",
             detail:
-              "Engineered role-based transition workflows (Draft → Submitted → HOD Review → Dean Approval), keeping appraisal actions organized and role-restricted."
+              "Engineered strict JWT authentication and role-based transition guards (Faculty → HoD → Registrar → Principal) across all review and multi-year appraisal endpoints."
           },
           {
-            title: "Standardized PDF Report Generation",
+            title: "Standardized PDF Report & Digital Audit Seal",
             detail:
-              "Integrated server-side PDF generation to export formatted evaluation dossiers matching institutional accreditation guidelines."
+              "Integrated server-side PDF generation to export formatted 9-section evaluation dossiers (200 marks) matching institutional accreditation guidelines."
           },
           {
-            title: "Human-in-the-Loop Review",
+            title: "Human-in-the-Loop AI Evaluation Synthesis",
             detail:
               "AI-generated summaries are strictly framed as drafts. Evaluators review, adjust, and approve content before committing it to the final appraisal record."
           }
@@ -161,8 +161,77 @@ export const portfolioData = {
       }
     },
     {
-      id: "service-marketplace",
+      id: "flowstate-lofi",
       number: "03",
+      name: "FlowState Lo-Fi — Voice & Loop Extension",
+      category: "Chrome Extension (Manifest V3) & Voice DSP",
+      headline: "Hands-Free YouTube Beat Looping & Phonetic Voice Control",
+      summary:
+        "A Manifest V3 Chrome Extension engineered to replay, A–B loop, and bookmark beat drops in YouTube Lo-Fi mixes hands-free using a custom Phonetic Skeleton + Levenshtein fuzzy voice classifier, smart audio auto-ducking, and Bluetooth earbud MediaSession hooks.",
+      featured: false,
+      hasAi: true,
+      aiBadge: "Phonetic Voice Engine",
+      stack: [
+        "Chrome Extension MV3",
+        "JavaScript (ES6+)",
+        "Web Speech API",
+        "Levenshtein Classifier",
+        "MediaSession API",
+        "Audio Auto-Ducking",
+        "Trusted-Types DOM"
+      ],
+      liveUrl: null,
+      githubUrl: "https://github.com/siddharth387-debug/flowstate-lofi",
+      filterTags: ["all", "ai", "extension"],
+      timeline: "2026 (Developer Productivity Tool)",
+      caseStudy: {
+        overview:
+          "Engineered a zero-latency Chrome Extension (Manifest V3) that allows developers to control 3-hour YouTube Lo-Fi mixes and coding tutorials completely hands-free via voice commands, keyboard hotkeys, or Bluetooth headphone taps without ever leaving their IDE.",
+        problem:
+          "When coding in a deep flow state to a multi-hour YouTube Lo-Fi mix, a specific 30-second beat subsection often hits that you want to replay or loop. Normally, developers must Alt+Tab out of their editor, hunt for the YouTube tab, and drag a tiny 3-hour timeline scrubber—losing focus and overshooting by 10 minutes. Furthermore, standard Web Speech API recognition struggles when background music is playing into the microphone or when commands are spoken casually.",
+        solution:
+          "Built FlowState Lo-Fi with a sliding delta-cursor stream processor over interim Web Speech transcripts (`maxAlternatives = 10`), paired with a custom Phonetic Skeleton + Levenshtein Edit-Distance classifier (`d ≤ 1`) for sub-second command recognition, automatic YouTube volume ducking during speech, A–B beat looping, and Bluetooth earbud tap interception via the MediaSession API.",
+        architecture: {
+          contentScript: "Trusted-Types compliant DOM engine (`content.js` + `content.css`) injecting the floating HUD widget & beat-drop drawer into YouTube",
+          voiceEngine: "Web Speech API (`webkitSpeechRecognition`) with Sliding Delta-Cursor & Phonetic Skeleton + Levenshtein fuzzy matcher",
+          audioDucking: "Smart volume auto-ducking state machine dipping YouTube HTML5 `<video>` gain when voice onset is detected",
+          pageBridge: "Main-world `page-bridge.js` intercepting `navigator.mediaSession` hardware Next/Previous track events for Bluetooth earbuds",
+          backgroundWorker: "Manifest V3 Service Worker (`background.js`) & `popup.js` synchronizing saved Beat Drop bookmarks via `chrome.storage`"
+        },
+        aiWorkflow: {
+          step1: "User speaks 'Replay', 'Loop', 'Save', or 'Volume 30' while coding (or double-taps Bluetooth earbuds)",
+          step2: "Smart Audio Auto-Ducking immediately dips YouTube playback volume so background music does not mask the microphone",
+          step3: "Sliding Delta-Cursor extracts only newly spoken tokens from live interim `webkitSpeechRecognition` streams (`maxAlternatives = 10`)",
+          step4: "Phonetic Skeleton + Levenshtein Edit-Distance classifier maps noisy/accented tokens (e.g., 'reeply' → 'replay') in <50ms",
+          step5: "Content script executes exact HTML5 `<video>` timeline seek, locks A–B section loop, or persists Beat Drop bookmark"
+        },
+        engineeringDecisions: [
+          {
+            title: "Phonetic Skeleton & Levenshtein Fuzzy Classifier",
+            detail:
+              "Standard speech-to-text often mishears short commands over background music (e.g., 'ree-play' or 'loopp'). Implemented a phonetic consonant skeleton reducer and bounded Levenshtein edit-distance (`d ≤ 1`) across 10 recognition alternatives for near-instant, noise-resilient intent matching."
+          },
+          {
+            title: "Sliding Delta-Cursor Stream Processing",
+            detail:
+              "Rather than waiting 1.5s for final speech utterances to close, tracked a monotonic word cursor over continuous interim transcripts so back-to-back commands fire in sub-second time without duplicate triggers."
+          },
+          {
+            title: "YouTube Trusted-Types CSP Compliance",
+            detail:
+              "YouTube enforces strict Content Security Policy (`require-trusted-types-for 'script'`), blocking all `innerHTML` injections. Engineered a pure `document.createElement` UI renderer to mount the floating widget and bookmark drawer safely."
+          },
+          {
+            title: "Bluetooth Earbud Hardware Bridge (`MediaSession`)",
+            detail:
+              "Injected a main-world page bridge to override YouTube's `navigator.mediaSession` handlers, allowing developers away from their desk to double-tap Previous/Next Track on Bluetooth headphones to rewind 30s or toggle A–B looping."
+          }
+        ]
+      }
+    },
+    {
+      id: "service-marketplace",
+      number: "04",
       name: "ServeHub — Service Marketplace",
       category: "Service Listing Web Application",
       headline: "Local Services Discovery & Booking Platform",
@@ -217,12 +286,12 @@ export const portfolioData = {
     },
     {
       id: "developer-portfolio",
-      number: "04",
+      number: "05",
       name: "Developer Portfolio & Prompt Inspector",
       category: "Frontend Architecture & CI/CD",
       headline: "Interactive Technical Portfolio with Live Tooling",
       summary:
-        "A dark-technical developer portfolio engineered with React 19, Tailwind CSS v4, and automated GitHub Pages CI/CD. Features an interactive Prompt Engineering Inspector and real-time architectural diagrams.",
+        "A dark-technical developer portfolio engineered with React 19, Tailwind CSS v4, Lenis smooth scroll, GSAP animations, and automated GitHub Pages CI/CD. Features interactive project simulators, a Prompt Engineering Inspector, and real-time architectural diagrams.",
       featured: false,
       hasAi: true,
       aiBadge: "Interactive AI Inspector",
@@ -230,6 +299,8 @@ export const portfolioData = {
         "React 19",
         "Vite",
         "Tailwind CSS v4",
+        "GSAP + ScrollTrigger",
+        "Lenis Smooth Scroll",
         "React Router",
         "GitHub Actions CI/CD"
       ],

@@ -18,7 +18,7 @@ export const PromptEngineering = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-12">
         
         {/* Section Header */}
-        <div className="space-y-3 max-w-3xl">
+        <div data-gsap="section-header" className="space-y-3 max-w-3xl">
           <div className="flex items-center gap-2 text-xs font-mono text-[#38bdf8]">
             <Terminal className="w-4 h-4" />
             <span>SYSTEMATIC PROMPT ARCHITECTURE</span>
@@ -32,10 +32,11 @@ export const PromptEngineering = () => {
         </div>
 
         {/* 5 Structural Pillars */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+        <div data-gsap="stagger-grid" className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
           {formula.map((item, idx) => (
             <div
               key={item.label}
+              data-gsap-item
               className="p-4 rounded-lg bg-[#12171f] border border-[#222b38] space-y-1.5"
             >
               <div className="text-xs font-mono text-[#38bdf8] flex items-center justify-between">

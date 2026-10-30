@@ -15,8 +15,11 @@ import { CustomCursor } from './components/CustomCursor';
 import { RecruiterChatbot } from './components/RecruiterChatbot';
 import { ScrollProgress } from './components/ScrollProgress';
 import { CommandPalette } from './components/CommandPalette';
+import { useLenisSmoothScroll, useGsapSectionReveals } from './utils/smoothScroll';
 
 function HomePage({ onOpenResume }) {
+  useGsapSectionReveals();
+
   return (
     <main>
       <Hero onOpenResume={onOpenResume} />
@@ -33,6 +36,9 @@ function HomePage({ onOpenResume }) {
 export default function App() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
+
+  // Initialize global Lenis smooth inertia scroll + GSAP ticker sync
+  useLenisSmoothScroll(isResumeOpen || isCommandPaletteOpen);
 
   // Global Ctrl + K / Cmd + K listener
   useEffect(() => {

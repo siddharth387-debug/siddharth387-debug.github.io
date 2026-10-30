@@ -10,7 +10,7 @@ export const Philosophy = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-12">
         
         {/* Core Statement */}
-        <div className="max-w-3xl space-y-4">
+        <div data-gsap="section-header" className="max-w-3xl space-y-4">
           <div className="text-xs font-mono text-[#38bdf8] uppercase tracking-wider flex items-center gap-2">
             <Sliders className="w-4 h-4" />
             <span>DISCIPLINED INTEGRATION</span>
@@ -24,10 +24,11 @@ export const Philosophy = () => {
         </div>
 
         {/* 3 Foundational Principles */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div data-gsap="stagger-grid" className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {principles.map((p, idx) => (
             <div
               key={p.title}
+              data-gsap-item
               className="p-6 rounded-xl border border-[#222b38] bg-[#12171f] hover:border-[#38bdf8]/40 transition-colors space-y-3"
             >
               <div className="text-xs font-mono text-[#38bdf8]">

@@ -60,6 +60,11 @@ export const RecruiterChatbot = () => {
         text: "The TCE Faculty Appraisal Management System was engineered for Thiagarajar College of Engineering. It digitizes annual faculty performance for 350+ faculty with 4-tier Role-Based Access Control, a 9-section accreditation rubric, and automated PDF dossier generation."
       };
     }
+    if (q.includes('flowstate') || q.includes('lofi') || q.includes('extension') || q.includes('chrome') || q.includes('voice') || q.includes('youtube')) {
+      return {
+        text: "FlowState Lo-Fi is a Chrome Extension (Manifest V3) for YouTube beat looping & hands-free voice control. It uses a custom Phonetic Skeleton + Levenshtein Edit-Distance (d <= 1) voice engine, smart audio auto-ducking (20% volume dip), and Bluetooth earbud MediaSession hooks."
+      };
+    }
     if (q.includes('hire') || q.includes('job') || q.includes('role') || q.includes('open') || q.includes('opportunity') || q.includes('intern') || q.includes('work') || q.includes('available') || q.includes('location') || q.includes('remote') || q.includes('chennai')) {
       return {
         text: "Yes! Siddharth is actively open for Full-Stack, Frontend, and AI-assisted web engineering opportunities. He is strongly focused on Remote roles and positions in Chennai, and is completely flexible to relocate anywhere. He is pursuing his MCA at TCE Madurai (8.47 CGPA).",
@@ -103,6 +108,9 @@ export const RecruiterChatbot = () => {
     } else if (type === 'appraisal') {
       questionText = "How does the TCE Appraisal system work?";
       answerText = "Engineered for Thiagarajar College of Engineering, it features a 4-tier governance hierarchy (Principal, Registrar, HoD, Faculty) across a 9-section accreditation rubric (200 marks). It includes automated server-side PDF generation with digital audit seals.";
+    } else if (type === 'flowstate') {
+      questionText = "Tell me about the FlowState Lo-Fi Chrome Extension.";
+      answerText = "FlowState Lo-Fi is a Manifest V3 Chrome Extension that adds custom A–B beat looping and hands-free voice commands ('replay', 'again', 'drop') to YouTube. It uses a Phonetic Skeleton + Levenshtein fuzzy matcher, smart 20% audio auto-ducking, and Bluetooth earbud tap hooks.";
     } else if (type === 'roles') {
       questionText = "Is Siddharth open to opportunities?";
       answerText = "Yes! Siddharth is actively open for Full-Stack, Frontend, and AI-assisted web development opportunities. He is strongly focused on Remote roles and Chennai, and is flexible to relocate anywhere. He is pursuing his MCA at TCE Madurai (8.47 CGPA).";
@@ -415,6 +423,12 @@ export const RecruiterChatbot = () => {
                     className="px-2 py-1 rounded bg-[#090d12] text-[#8b949e] hover:text-[#38bdf8] border border-[#222b38] hover:border-[#38bdf8]/40 transition-colors cursor-pointer shrink-0"
                   >
                     🏛️ TCE Appraisal
+                  </button>
+                  <button
+                    onClick={() => handleQuickQuestion('flowstate')}
+                    className="px-2 py-1 rounded bg-[#090d12] text-[#8b949e] hover:text-[#38bdf8] border border-[#222b38] hover:border-[#38bdf8]/40 transition-colors cursor-pointer shrink-0"
+                  >
+                    🎧 FlowState Lo-Fi
                   </button>
                   <button
                     onClick={() => handleQuickQuestion('roles')}

@@ -9,6 +9,7 @@ import { Github } from './Icons';
 import { portfolioData } from '../data/portfolioData';
 import rowlAiScreenshot from '../assets/rowl-ai-preview.png';
 import tceAppraisalScreenshot from '../assets/tce-appraisal-preview.png';
+import flowstateLofiScreenshot from '../assets/flowstate-lofi-preview.png';
 
 export const CaseStudy = () => {
   const { id } = useParams();
@@ -184,6 +185,8 @@ export const CaseStudy = () => {
               <p className="text-[11px] text-[#8b949e]">
                 {project.id === 'service-marketplace'
                   ? 'HTML5, CSS3, Vanilla JS Form Controllers'
+                  : project.id === 'flowstate-lofi'
+                  ? 'Trusted-Types Content Script HUD & Extension Popup (MV3)'
                   : 'React.js SPA with stateful component hierarchy'}
               </p>
             </div>
@@ -192,11 +195,13 @@ export const CaseStudy = () => {
             <div className="p-4 rounded-lg bg-[#12171f] border border-[#222b38] space-y-2">
               <div className="flex items-center gap-2 text-emerald-400">
                 <Server className="w-4 h-4" />
-                <span className="font-bold">Server Tier</span>
+                <span className="font-bold">Processing Tier</span>
               </div>
               <p className="text-[11px] text-[#8b949e]">
                 {project.id === 'service-marketplace'
                   ? 'PHP MVC / Procedural backend with session management'
+                  : project.id === 'flowstate-lofi'
+                  ? 'MV3 Service Worker + Main-World MediaSession Page Bridge'
                   : 'Node.js & Express.js REST API with JWT validation'}
               </p>
             </div>
@@ -210,6 +215,8 @@ export const CaseStudy = () => {
               <p className="text-[11px] text-[#8b949e]">
                 {project.id === 'service-marketplace'
                   ? 'MySQL Relational Schema (Normalized with indexes)'
+                  : project.id === 'flowstate-lofi'
+                  ? 'chrome.storage.local Persistent Beat Drop Bookmarks'
                   : 'MongoDB document collections with indexed schemas'}
               </p>
             </div>
@@ -220,17 +227,19 @@ export const CaseStudy = () => {
             <div className="p-4 rounded-lg bg-[#12171f] border border-[#38bdf8]/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-mono">
               <div className="flex items-center gap-2.5 text-[#38bdf8]">
                 <Cpu className="w-4 h-4" />
-                <span className="font-bold">AI / LLM Integration Layer:</span>
+                <span className="font-bold">AI / Voice DSP Layer:</span>
                 <span className="text-[#8b949e]">
                   {project.id === 'rowl-ai'
                     ? 'Groq Cloud API (Sera AI conversational reflection)'
                     : project.id === 'college-appraisal'
                     ? 'Backend LLM Evaluation & Accomplishment Synthesis'
+                    : project.id === 'flowstate-lofi'
+                    ? 'Phonetic Skeleton + Levenshtein Edit-Distance Voice Classifier & Smart Auto-Ducking'
                     : 'Interactive Client-Side Prompt State Inspector'}
                 </span>
               </div>
               <span className="px-2 py-0.5 rounded bg-sky-500/10 text-[#38bdf8] border border-sky-500/20 text-[10px]">
-                {project.id === 'developer-portfolio' ? 'Client State Engine' : 'External API Integration'}
+                {project.id === 'developer-portfolio' || project.id === 'flowstate-lofi' ? 'Client Stream Engine' : 'External API Integration'}
               </span>
             </div>
           )}
@@ -819,6 +828,48 @@ const ProjectFeatureWalkthrough = ({ project }) => {
             <div className="p-4 rounded bg-[#12171f] border border-[#222b38] space-y-1">
               <div className="text-purple-400 font-bold">3. Pages Deployment</div>
               <p className="text-[11px] text-[#8b949e]">Atomic publish to GitHub Pages edge network</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // 5. FlowState Lo-Fi Walkthrough
+  if (project.id === 'flowstate-lofi') {
+    return (
+      <section className="space-y-6">
+        <h2 className="text-xl font-bold text-[#f0f6fc] flex items-center gap-2 font-mono">
+          <span className="text-[#38bdf8]">03.</span> Phonetic Voice Engine & Chrome Extension HUD
+        </h2>
+
+        <div className="rounded-xl border border-[#222b38] bg-[#0d121a] overflow-hidden shadow-2xl">
+          <div className="p-4 border-b border-[#222b38] flex items-center justify-between text-xs font-mono text-[#8b949e] bg-[#12171f]">
+            <span>FlowState Lo-Fi — YouTube Overlay HUD & Popup UI</span>
+            <span className="text-emerald-400 font-bold">Manifest V3 • Trusted-Types Safe</span>
+          </div>
+          <div className="p-4 space-y-4">
+            <div className="rounded-lg overflow-hidden border border-[#222b38] aspect-[16/9]">
+              <img
+                src={flowstateLofiScreenshot}
+                alt="FlowState Lo-Fi Chrome Extension Preview"
+                className="w-full h-full object-cover object-center"
+              />
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono text-xs">
+              <div className="p-3.5 rounded bg-[#12171f] border border-[#222b38] space-y-1">
+                <div className="text-[#38bdf8] font-bold">Phonetic + Levenshtein</div>
+                <p className="text-[11px] text-[#8b949e]">Reduces spoken tokens to consonant skeletons with edit-distance d ≤ 1 across 10 speech alternatives.</p>
+              </div>
+              <div className="p-3.5 rounded bg-[#12171f] border border-[#222b38] space-y-1">
+                <div className="text-emerald-400 font-bold">Smart Auto-Ducking</div>
+                <p className="text-[11px] text-[#8b949e]">Automatically dips YouTube player gain to 20% during speech recognition so music never masks the mic.</p>
+              </div>
+              <div className="p-3.5 rounded bg-[#12171f] border border-[#222b38] space-y-1">
+                <div className="text-amber-400 font-bold">Earbud MediaSession</div>
+                <p className="text-[11px] text-[#8b949e]">Overrides hardware Previous/Next track taps on Bluetooth headphones for hands-free 30s replay & looping.</p>
+              </div>
             </div>
           </div>
         </div>

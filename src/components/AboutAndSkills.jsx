@@ -12,7 +12,7 @@ export const AboutAndSkills = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 space-y-16">
         
         {/* About Positioning */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div data-gsap="section-header" className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           <div className="lg:col-span-4 space-y-3">
             <div className="text-xs font-mono text-[#38bdf8] uppercase tracking-wider flex items-center gap-2">
               <User className="w-4 h-4" />
