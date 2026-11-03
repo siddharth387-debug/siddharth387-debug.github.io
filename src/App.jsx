@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { ProjectsSection } from './components/ProjectsSection';
+import { SystemArchitecture } from './components/SystemArchitecture';
 import { AiWorkflow } from './components/AiWorkflow';
 import { PromptEngineering } from './components/PromptEngineering';
 import { Philosophy } from './components/Philosophy';
@@ -24,6 +25,7 @@ function HomePage({ onOpenResume }) {
     <main>
       <Hero onOpenResume={onOpenResume} />
       <ProjectsSection />
+      <SystemArchitecture />
       <AiWorkflow />
       <PromptEngineering />
       <Philosophy />

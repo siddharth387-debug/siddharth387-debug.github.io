@@ -16,7 +16,7 @@ export function scrollToTarget(target, options = {}) {
   if (lenisInstance) {
     lenisInstance.scrollTo(target, {
       offset: -72,
-      duration: 1.05,
+      duration: 1.15,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       ...options
     });
@@ -30,14 +30,12 @@ export function scrollToTarget(target, options = {}) {
 
 export function useLenisSmoothScroll(isModalOpen = false) {
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) return;
-
     const lenis = new Lenis({
-      duration: 1.1,
+      lerp: 0.085,
+      duration: 1.15,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      wheelMultiplier: 0.95,
+      wheelMultiplier: 1.0,
       touchMultiplier: 1.5
     });
 
@@ -68,7 +66,13 @@ export function useLenisSmoothScroll(isModalOpen = false) {
 
     document.addEventListener('click', handleAnchorClick);
 
+    // Refresh ScrollTrigger once layout settles
+    const refreshTimer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 300);
+
     return () => {
+      clearTimeout(refreshTimer);
       document.removeEventListener('click', handleAnchorClick);
       gsap.ticker.remove(tickerCallback);
       lenis.destroy();
@@ -89,25 +93,22 @@ export function useLenisSmoothScroll(isModalOpen = false) {
 
 export function useGsapSectionReveals() {
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) return;
-
     const ctx = gsap.context(() => {
       // Animate section headers
       gsap.utils.toArray('[data-gsap="section-header"]').forEach((el) => {
         gsap.fromTo(
           el,
-          { opacity: 0, y: 26 },
+          { opacity: 0, y: 28 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.65,
+            duration: 0.7,
             ease: 'power3.out',
             clearProps: 'transform',
             scrollTrigger: {
               trigger: el,
-              start: 'top 88%',
-              toggleActions: 'play none none none'
+              start: 'top 90%',
+              toggleActions: 'play none none reverse'
             }
           }
         );
@@ -119,18 +120,19 @@ export function useGsapSectionReveals() {
         if (!items.length) return;
         gsap.fromTo(
           items,
-          { opacity: 0, y: 28 },
+          { opacity: 0, y: 32, scale: 0.98 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.6,
-            stagger: 0.08,
+            scale: 1,
+            duration: 0.65,
+            stagger: 0.09,
             ease: 'power3.out',
             clearProps: 'transform',
             scrollTrigger: {
               trigger: grid,
-              start: 'top 86%',
-              toggleActions: 'play none none none'
+              start: 'top 88%',
+              toggleActions: 'play none none reverse'
             }
           }
         );

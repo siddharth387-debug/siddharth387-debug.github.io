@@ -23,11 +23,23 @@ export const CommandPalette = ({ isOpen, onClose, onOpenResume }) => {
       id: 'nav-projects',
       category: 'Navigation',
       title: 'Work & Projects',
-      subtitle: 'View full-stack MERN & PHP systems',
+      subtitle: 'View full-stack MERN, PHP & Chrome Extension systems',
       icon: Layers,
       action: () => {
         window.location.hash = '#projects';
         const el = document.getElementById('projects');
+        el?.scrollIntoView({ behavior: 'smooth' });
+      }
+    },
+    {
+      id: 'nav-architecture',
+      category: 'Navigation',
+      title: 'System Architecture Blueprints',
+      subtitle: 'Interactive 3-tier data-flow diagrams & request traces',
+      icon: Terminal,
+      action: () => {
+        window.location.hash = '#architecture';
+        const el = document.getElementById('architecture');
         el?.scrollIntoView({ behavior: 'smooth' });
       }
     },
@@ -97,7 +109,7 @@ export const CommandPalette = ({ isOpen, onClose, onOpenResume }) => {
       subtitle: 'Institutional governance portal for 350+ faculty',
       icon: ExternalLink,
       badge: 'Live Portal',
-      action: () => window.open('https://tce-appraisal.vercel.app/', '_blank')
+      action: () => window.open('https://tce-apprisal.vercel.app/', '_blank')
     },
     {
       id: 'proj-study-rowl',
@@ -114,6 +126,14 @@ export const CommandPalette = ({ isOpen, onClose, onOpenResume }) => {
       subtitle: 'Read 4-tier RBAC, PDF generation & rubric modeling',
       icon: ArrowRight,
       action: () => navigate('/projects/college-appraisal')
+    },
+    {
+      id: 'proj-study-flowstate',
+      category: 'Case Studies',
+      title: 'FlowState Lo-Fi Chrome Extension Deep-Dive',
+      subtitle: 'Phonetic + Levenshtein voice DSP, auto-ducking & MV3 bridge',
+      icon: ArrowRight,
+      action: () => navigate('/projects/flowstate-lofi')
     },
 
     // Quick Actions

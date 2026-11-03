@@ -18,6 +18,7 @@ export const Navbar = ({ onOpenResume, onOpenCommandPalette }) => {
 
   const navLinks = [
     { name: 'Work', href: isHomePage ? '#projects' : '/#projects' },
+    { name: 'Architecture', href: isHomePage ? '#architecture' : '/#architecture' },
     { name: 'About', href: isHomePage ? '#about' : '/#about' },
     { name: 'AI Workflow', href: isHomePage ? '#workflow' : '/#workflow' },
     { name: 'Prompting', href: isHomePage ? '#prompting' : '/#prompting' },
