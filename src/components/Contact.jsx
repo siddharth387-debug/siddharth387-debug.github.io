@@ -4,6 +4,7 @@ import { Github, Linkedin } from './Icons';
 import { portfolioData } from '../data/portfolioData';
 import { SpotlightCard } from './SpotlightCard';
 import { audioSynth } from '../utils/audioSynth';
+import { dispatchPortfolioMessage } from '../utils/messageApi';
 
 export const Contact = ({ onOpenResume }) => {
   const [copied, setCopied] = useState(false);
@@ -17,7 +18,8 @@ export const Contact = ({ onOpenResume }) => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'activation_pending' | 'error' | null
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
+  const [receiptId, setReceiptId] = useState(null);
   const [copiedFallback, setCopiedFallback] = useState(false);
 
   const handleCopyEmail = () => {
@@ -43,38 +45,17 @@ export const Contact = ({ onOpenResume }) => {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    try {
-      const postData = new FormData();
-      postData.append('Name', formData.name);
-      postData.append('Email', formData.email);
-      postData.append('Purpose', formData.purpose);
-      postData.append('Message', formData.message);
-      postData.append('_subject', `[Portfolio DM] ${formData.purpose} from ${formData.name}`);
-      postData.append('_captcha', 'false');
+    const result = await dispatchPortfolioMessage({
+      name: formData.name,
+      email: formData.email,
+      purpose: formData.purpose,
+      message: formData.message,
+      source: 'Portfolio Contact Form'
+    });
 
-      const response = await fetch(`https://formsubmit.co/ajax/${email}`, {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json'
-        },
-        body: postData
-      });
-
-      const data = await response.json().catch(() => ({}));
-
-      if (data.success === 'true' || data.success === true) {
-        setSubmitStatus('success');
-      } else if (data.message && data.message.toLowerCase().includes('activation')) {
-        setSubmitStatus('activation_pending');
-      } else {
-        setSubmitStatus('error');
-      }
-    } catch (err) {
-      console.warn('Direct messaging transmission notice:', err);
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-    }
+    setIsSubmitting(false);
+    setReceiptId(result.receiptId);
+    setSubmitStatus(result.status);
   };
 
   const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(
@@ -282,8 +263,13 @@ export const Contact = ({ onOpenResume }) => {
                     <div className="space-y-2">
                       <h4 className="text-xl font-bold text-[#f0f6fc]">Message Dispatched Successfully!</h4>
                       <p className="text-sm text-[#8b949e] max-w-md mx-auto">
-                        Your direct inquiry has been sent to Siddharth's inbox (<span className="text-[#38bdf8] font-mono">{email}</span>). He will respond within 24 hours.
+                        Your direct inquiry has been delivered to Siddharth's message broker & inbox (<span className="text-[#38bdf8] font-mono">{email}</span>). He will respond within 24 hours.
                       </p>
+                      {receiptId && (
+                        <div className="inline-block px-3 py-1 rounded bg-emerald-500/10 border border-emerald-500/30 text-xs font-mono text-emerald-400">
+                          Server Receipt ID: #{receiptId}
+                        </div>
+                      )}
                     </div>
                     <div className="pt-3">
                       <button

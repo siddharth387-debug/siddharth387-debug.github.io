@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { MessageSquare, X, Send, Bot, CheckCircle2, Sparkles, Mail, User, AlertCircle, ArrowUpRight, Copy, Check, RefreshCw } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 import { audioSynth } from '../utils/audioSynth';
+import { dispatchPortfolioMessage, fetchPortfolioInbox, NTFY_WEB_URL } from '../utils/messageApi';
 
 export const RecruiterChatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -123,13 +124,40 @@ export const RecruiterChatbot = () => {
     ]);
   };
 
-  const handleSendMessageInChat = (e) => {
+  const handleSendMessageInChat = async (e) => {
     e.preventDefault();
     if (!userInput.trim()) return;
 
     audioSynth.playPop();
     const query = userInput.trim();
     setUserInput('');
+
+    // Developer Live Inbox Check Command (/inbox)
+    if (query.toLowerCase() === '/inbox' || query.toLowerCase() === 'inbox') {
+      setMessages((prev) => [
+        ...prev,
+        { sender: 'user', text: query },
+        { sender: 'bot', text: '🔄 Fetching live messages from cloud backend API...' }
+      ]);
+      const items = await fetchPortfolioInbox();
+      const summaryText =
+        items.length === 0
+          ? 'No messages in the cloud broker queue yet.'
+          : `📬 Live Cloud Inbox (${items.length} recent messages):\n\n` +
+            items
+              .slice(0, 5)
+              .map((m, i) => `${i + 1}. ${m.title || 'Message'}\n${m.message}`)
+              .join('\n\n────────────────\n\n');
+
+      setMessages((prev) => [
+        ...prev.slice(0, -1),
+        {
+          sender: 'bot',
+          text: summaryText
+        }
+      ]);
+      return;
+    }
 
     const botReply = getBotResponse(query);
 
@@ -163,80 +191,43 @@ export const RecruiterChatbot = () => {
     audioSynth.playPop();
     setIsSubmitting(true);
 
-    const mailtoLink = `mailto:personalsiddharth387@gmail.com?subject=${encodeURIComponent(
-      `Portfolio Message from ${formData.name}`
-    )}&body=${encodeURIComponent(
-      `Hi Siddharth,\n\n${formData.message}\n\nFrom: ${formData.name}\nEmail: ${formData.email}`
-    )}`;
+    const result = await dispatchPortfolioMessage({
+      name: formData.name,
+      email: formData.email,
+      purpose: 'Recruiter / Assistant DM',
+      message: formData.message,
+      source: 'Portfolio Assistant'
+    });
 
-    const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=personalsiddharth387@gmail.com&su=${encodeURIComponent(
-      `Portfolio Message from ${formData.name}`
-    )}&body=${encodeURIComponent(
-      `Hi Siddharth,\n\n${formData.message}\n\nFrom: ${formData.name}\nEmail: ${formData.email}`
-    )}`;
+    setIsSubmitting(false);
 
-    let deliveryStatus = 'error';
-
-    try {
-      const postData = new FormData();
-      postData.append('Name', formData.name);
-      postData.append('Email', formData.email);
-      postData.append('Message', formData.message);
-      postData.append('_subject', `[Portfolio Assistant] New Message from ${formData.name}`);
-      postData.append('_captcha', 'false');
-
-      const res = await fetch('https://formsubmit.co/ajax/personalsiddharth387@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json'
-        },
-        body: postData
-      });
-
-      const data = await res.json().catch(() => ({}));
-
-      if (data.success === 'true' || data.success === true) {
-        deliveryStatus = 'success';
-      } else if (data.message && data.message.toLowerCase().includes('activation')) {
-        deliveryStatus = 'activation_pending';
-      } else {
-        deliveryStatus = 'error';
-      }
-    } catch (err) {
-      console.warn('Direct endpoint transmission notice:', err);
-      deliveryStatus = 'error';
-    } finally {
-      setIsSubmitting(false);
-
-      let botText = '';
-      if (deliveryStatus === 'success') {
-        botText = `✓ Your message has been delivered directly to Siddharth's inbox (personalsiddharth387@gmail.com)! He typically responds within 24 hours.`;
-      } else if (deliveryStatus === 'activation_pending') {
-        botText = `⚠️ FormSubmit one-time email activation is pending for the developer. To make sure your note is delivered right away, please click "Open in Gmail" or copy the message below!`;
-      } else {
-        botText = `⚠️ Direct web submission encountered a network block. Please click "Open in Gmail" below to send your note directly.`;
-      }
-
-      setMessages((prev) => [
-        ...prev,
-        {
-          sender: 'user',
-          text: `[Sent to Developer]: "${formData.message}" (From: ${formData.name} <${formData.email}>)`
-        },
-        {
-          sender: 'bot',
-          text: botText,
-          isConfirmation: true,
-          statusType: deliveryStatus,
-          mailtoUrl: mailtoLink,
-          gmailWebUrl: gmailWebUrl,
-          copyContent: `From: ${formData.name} <${formData.email}>\nMessage:\n${formData.message}`
-        }
-      ]);
-
-      setFormData({ name: '', email: '', message: '' });
-      setMode('chat');
+    let botText = '';
+    if (result.status === 'success') {
+      botText = `✓ Your message has been dispatched directly to Siddharth's cloud message broker & inbox (Receipt #${result.receiptId})! He typically responds within 24 hours.`;
+    } else {
+      botText = `⚠️ Direct web submission encountered a network block. Please click "Gmail (Web)" below to send your note directly.`;
     }
+
+    setMessages((prev) => [
+      ...prev,
+      {
+        sender: 'user',
+        text: `[Sent to Developer]: "${formData.message}" (From: ${formData.name} <${formData.email}>)`
+      },
+      {
+        sender: 'bot',
+        text: botText,
+        isConfirmation: true,
+        statusType: result.status,
+        receiptId: result.receiptId,
+        mailtoUrl: result.mailtoUrl,
+        gmailWebUrl: result.gmailWebUrl,
+        copyContent: `From: ${formData.name} <${formData.email}>\nMessage:\n${formData.message}`
+      }
+    ]);
+
+    setFormData({ name: '', email: '', message: '' });
+    setMode('chat');
   };
 
   const handleCopyConfirmation = (content, idx) => {
@@ -329,7 +320,7 @@ export const RecruiterChatbot = () => {
                     className={`flex ${m.sender === 'user' ? 'justify-end' : 'justify-start'}`}
                   >
                     <div
-                      className={`max-w-[88%] p-3 rounded-xl leading-relaxed ${
+                      className={`max-w-[88%] p-3 rounded-xl leading-relaxed whitespace-pre-line ${
                         m.sender === 'user'
                           ? 'bg-[#38bdf8] text-[#090d12] font-medium rounded-tr-none shadow-sm'
                           : 'bg-[#12171f] text-[#c9d1d9] border border-[#222b38] rounded-tl-none font-mono text-[11px]'
