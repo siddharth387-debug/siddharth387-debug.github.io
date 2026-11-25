@@ -68,7 +68,7 @@ export const RecruiterChatbot = () => {
     }
     if (q.includes('hire') || q.includes('job') || q.includes('role') || q.includes('open') || q.includes('opportunity') || q.includes('intern') || q.includes('work') || q.includes('available') || q.includes('location') || q.includes('remote') || q.includes('chennai')) {
       return {
-        text: "Yes! Siddharth is actively open for Full-Stack, Frontend, and AI-assisted web engineering opportunities. He is strongly focused on Remote roles and positions in Chennai, and is completely flexible to relocate anywhere. He is pursuing his MCA at TCE Madurai (8.47 CGPA).",
+        text: "Yes! Siddharth is actively open for Full-Stack Software Engineer, Backend, and Frontend roles. He is strongly focused on Remote roles and positions in Chennai, and is completely flexible to relocate anywhere. He is pursuing his MCA at TCE Madurai (8.47 CGPA).",
         suggestDm: true,
         detectedMessage: input
       };
@@ -114,7 +114,7 @@ export const RecruiterChatbot = () => {
       answerText = "FlowState Lo-Fi is a Manifest V3 Chrome Extension that adds custom A–B beat looping and hands-free voice commands ('replay', 'again', 'drop') to YouTube. It uses a Phonetic Skeleton + Levenshtein fuzzy matcher, smart 20% audio auto-ducking, and Bluetooth earbud tap hooks.";
     } else if (type === 'roles') {
       questionText = "Is Siddharth open to opportunities?";
-      answerText = "Yes! Siddharth is actively open for Full-Stack, Frontend, and AI-assisted web development opportunities. He is strongly focused on Remote roles and Chennai, and is flexible to relocate anywhere. He is pursuing his MCA at TCE Madurai (8.47 CGPA).";
+      answerText = "Yes! Siddharth is actively open for Full-Stack Software Engineer, Backend, and Frontend opportunities. He is strongly focused on Remote roles and Chennai, and is flexible to relocate anywhere. He is pursuing his MCA at TCE Madurai (8.47 CGPA).";
     }
 
     setMessages((prev) => [

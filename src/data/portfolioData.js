@@ -1,7 +1,7 @@
 export const portfolioData = {
   personal: {
     name: "Siddharth K",
-    title: "AI-Assisted Web Developer",
+    title: "Full-Stack Software Engineer",
     location: "Tamil Nadu, India",
     availability: "Available for Full-Stack Roles (Remote · Chennai · Anywhere)",
     workPreference: "Remote · Chennai · Relocation Anywhere",
@@ -11,10 +11,10 @@ export const portfolioData = {
     status: "Open to opportunities (Remote / Chennai / Anywhere)",
 
     supportingStatement:
-      "I build full-stack web applications and integrate LLM-powered capabilities to turn conventional software into intelligent experiences.",
+      "I architect and deploy production full-stack applications across the MERN stack and PHP/MySQL — combining hardened backend security, multi-tier RBAC, normalized data modeling, and low-latency LLM inference.",
     shortBio:
-      "Full-stack web developer with hands-on experience across the MERN stack, PHP/MySQL, REST API architecture, and application deployment. Focused on combining reliable web development with practical AI/LLM integration using structured prompt engineering and LLM APIs.",
-    primaryTech: ["MERN Stack", "PHP", "MySQL", "Prompt Engineering", "LLMs", "REST APIs"]
+      "Full-stack software engineer with hands-on production experience across the MERN stack, PHP/MySQL, REST API architecture, and cloud deployment. Experienced in 4-tier RBAC governance systems, cryptographic webhook verification, Chrome Extension (Manifest V3) internals, and low-latency LLM API integrations.",
+    primaryTech: ["MERN Stack", "React 19", "Node.js & Express", "PHP & MySQL", "REST APIs & RBAC", "LLM Integration"]
 
   },
 
@@ -98,13 +98,13 @@ export const portfolioData = {
       id: "college-appraisal",
       number: "02",
       name: "Faculty Appraisal Management System",
-      category: "AI-Assisted College Appraisal Platform",
+      category: "Institutional Governance & RBAC Platform",
       headline: "Institutional Appraisal & Evaluation Platform",
       summary:
-        "A full-stack MERN application digitizing the institutional faculty appraisal lifecycle with multi-role RBAC, dynamic approval pipelines, automated PDF report generation, and AI-assisted summary drafting.",
+        "A full-stack institutional governance platform digitizing the faculty appraisal lifecycle for 350+ faculty with 4-tier RBAC, a 200-point accreditation rubric, automated PDF dossier generation, and executive summary synthesis.",
       featured: false,
       hasAi: true,
-      aiBadge: "AI-Assisted Workflow",
+      aiBadge: "4-Tier RBAC + LLM Synthesis",
       stack: [
         "MERN Stack",
         "React",
@@ -342,28 +342,28 @@ export const portfolioData = {
   ],
 
   aiWorkflow: {
-    heading: "How I Build With AI",
+    heading: "Engineering & Delivery Lifecycle",
     subheading:
-      "AI assists my development process, but generated output is evaluated, understood, tested and deliberately integrated into the application.",
+      "My 10-stage software engineering lifecycle — from requirement decomposition, schema design, and API contract modeling to security verification and cloud deployment.",
     steps: [
-      { step: "01", name: "Understand", desc: "Define the requirement, expected behavior, edge cases, and constraints." },
-      { step: "02", name: "Decompose", desc: "Break the problem into smaller functions, components, API tasks, or implementation steps." },
-      { step: "03", name: "Prompt", desc: "Create structured prompts with relevant context, constraints, and expected output." },
-      { step: "04", name: "Explore", desc: "Use AI to investigate possible implementations and alternative approaches." },
-      { step: "05", name: "Evaluate", desc: "Review generated suggestions against the application's requirements and existing codebase." },
-      { step: "06", name: "Implement", desc: "Adapt useful ideas and integrate them into the application." },
-      { step: "07", name: "Test", desc: "Test the implementation using expected flows and edge cases." },
-      { step: "08", name: "Debug", desc: "Use logs, errors, documentation, and AI assistance to investigate problems." },
-      { step: "09", name: "Validate", desc: "Confirm that the implementation works correctly within the application." },
-      { step: "10", name: "Deploy", desc: "Deploy the completed changes and verify the application in its target environment." }
+      { step: "01", name: "Requirements", desc: "Define domain requirements, user roles, edge cases, and security constraints." },
+      { step: "02", name: "Data & Schema", desc: "Model normalized 3NF relational tables or indexed MongoDB document schemas." },
+      { step: "03", name: "API Contracts", desc: "Define strict REST request/response schemas, status codes, and auth middleware." },
+      { step: "04", name: "Architecture", desc: "Decouple client state, controller logic, and external service integrations." },
+      { step: "05", name: "Auth & RBAC", desc: "Enforce JWT HTTP-only cookies, role transition guards, and input sanitization." },
+      { step: "06", name: "Implementation", desc: "Write modular frontend and backend components with deterministic state handling." },
+      { step: "07", name: "Testing", desc: "Verify happy paths, boundary conditions, and authorization failure modes." },
+      { step: "08", name: "Debugging", desc: "Profile endpoint latency, inspect execution traces, and eliminate bottlenecks." },
+      { step: "09", name: "Audit & Security", desc: "Validate HMAC webhook signatures, prepared statements, and CSP compliance." },
+      { step: "10", name: "CI/CD Deploy", desc: "Ship via GitHub Actions, Vercel Edge, and Render with environment isolation." }
     ]
 
   },
 
   promptEngineering: {
-    heading: "Prompt Engineering",
+    heading: "Production LLM & Schema Architecture",
     subheading:
-      "A practical approach to working with Large Language Models. Structured prompts provide clear context, constraints, and consistent output formats.",
+      "When integrating Large Language Models into production backends (like Rowl AI), I enforce deterministic JSON contracts, input sanitization, and domain guardrails.",
     formula: [
       { label: "Role", desc: "Sets domain expertise and operational tone" },
       { label: "Context", desc: "Provides existing architecture, state, and environment constraints" },
@@ -402,24 +402,24 @@ export const portfolioData = {
   },
 
   engineeringPhilosophy: {
-    heading: "AI Is Part of the Engineering Workflow",
+    heading: "Systems First. Deterministic By Design.",
     statement:
-      "I use LLMs not only for generating code, but for exploring solutions, understanding implementation choices, debugging, refining prompts and integrating AI capabilities into real applications.",
+      "Reliable software depends on strict data contracts, defense-in-depth security, and predictable state transitions — whether executing an ACID SQL transaction, enforcing 4-tier RBAC, or constraining an LLM inference pipeline.",
     principles: [
       {
-        title: "Engineering Judgment First",
+        title: "Defense-in-Depth Security",
         detail:
-          "AI proposes; engineering decides. Every line of code, schema change, and component is reviewed, understood, and tested before integration."
+          "Authentication and authorization belong at the protocol and middleware layer: JWTs in HTTP-only cookies, timing-safe HMAC webhook checks, and parameterized SQL/NoSQL queries."
       },
       {
-        title: "Clear Interface Expectations",
+        title: "Strict Interface Contracts",
         detail:
-          "Defining explicit input/output structures and data shapes so AI assistance aligns directly with the application's actual requirements."
+          "Every REST endpoint, database model, and inference call enforces explicit input validation and deterministic response schemas."
       },
       {
-        title: "Responsible Application Boundaries",
+        title: "Responsible Domain Boundaries",
         detail:
-          "Designing clear instructions and boundaries for conversational features (such as in Rowl AI), keeping them focused on guided reflection without medical claims."
+          "When integrating AI capabilities (such as Sera AI in Rowl AI), hard system guardrails ensure features remain safe, fast (~280ms), and bounded to their domain."
       }
     ]
 

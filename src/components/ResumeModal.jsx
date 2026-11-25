@@ -49,7 +49,7 @@ export const ResumeModal = ({ isOpen, onClose }) => {
               SIDDHARTH K
             </h1>
             <p className="text-sm font-mono text-[#38bdf8]">
-              Web Developer | MERN Stack & AI-Assisted Development
+              Full-Stack Software Engineer | MERN Stack, PHP/MySQL & System Architecture
             </p>
             <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 text-xs font-mono text-[#8b949e] pt-1">
               <span className="flex items-center gap-1">
@@ -86,7 +86,7 @@ export const ResumeModal = ({ isOpen, onClose }) => {
               SUMMARY
             </h2>
             <p className="text-xs leading-relaxed text-[#8b949e]">
-              Full-stack web developer with hands-on experience in MERN stack development, REST API integration, authentication, database management, payment integration, and application deployment. Demonstrated practical development of real-world web applications involving user authentication, backend services, MongoDB data management, PDF generation, and third-party API integration. Currently building expertise in Prompt Engineering and Large Language Models (LLMs), with experience integrating LLM capabilities into live deployed applications. Focused on developing AI-assisted web applications by combining full-stack engineering with generative AI technologies.
+              Full-stack software engineer with hands-on production experience in MERN stack (React 19, Node.js, Express.js, MongoDB) and PHP/MySQL development, REST API architecture, 4-tier Role-Based Access Control (RBAC), cryptographic payment webhook verification, and cloud deployment. Proven track record shipping real-world systems including an institutional faculty appraisal portal governing 350+ faculty, a mental wellness platform with sub-300ms Groq LLM inference, and a Manifest V3 Chrome Extension with custom Phonetic + Levenshtein voice DSP.
             </p>
           </div>
 
@@ -96,15 +96,15 @@ export const ResumeModal = ({ isOpen, onClose }) => {
               TECHNICAL SKILLS
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono">
-              <div><strong className="text-[#f0f6fc]">Languages:</strong> C, C++, JavaScript, Python</div>
-              <div><strong className="text-[#f0f6fc]">Frontend:</strong> HTML, CSS, React.js</div>
-              <div><strong className="text-[#f0f6fc]">Backend:</strong> Node.js, Express.js, REST APIs</div>
-              <div><strong className="text-[#f0f6fc]">Databases:</strong> MongoDB, MySQL</div>
+              <div><strong className="text-[#f0f6fc]">Languages:</strong> JavaScript (ES6+), PHP 8.x, SQL, C, C++, Python</div>
+              <div><strong className="text-[#f0f6fc]">Frontend:</strong> React 19, Tailwind CSS, HTML5, CSS3, Chrome Extensions (MV3)</div>
+              <div><strong className="text-[#f0f6fc]">Backend:</strong> Node.js, Express.js, PHP, RESTful APIs, Webhook HMAC Verification</div>
+              <div><strong className="text-[#f0f6fc]">Databases:</strong> MongoDB (Mongoose), MySQL (3NF Relational Schemas, PDO ACID)</div>
               <div className="sm:col-span-2">
-                <strong className="text-[#f0f6fc]">AI-Assisted Development:</strong> Claude Code orchestration, Groq LLM API integration, prompt engineering for dev workflows
+                <strong className="text-[#f0f6fc]">Applied AI & DSP Integration:</strong> Groq Cloud LPU API, Structured JSON Schema Validation, Defensive System Guardrails, Web Speech API & Levenshtein Edit-Distance Classifiers
               </div>
-              <div><strong className="text-[#f0f6fc]">Tools & Platforms:</strong> Git, GitHub, VS Code, Vercel, Render</div>
-              <div><strong className="text-[#f0f6fc]">Core Concepts:</strong> CRUD, JWT, HTTP-only Cookies, RESTful API Design, RBAC</div>
+              <div><strong className="text-[#f0f6fc]">DevOps & Cloud:</strong> Git, GitHub Actions CI/CD, Vercel Edge, Render, Postman, Linux CLI</div>
+              <div><strong className="text-[#f0f6fc]">Security & Architecture:</strong> JWT in HTTP-only Cookies, 4-Tier RBAC, CSRF Defense, Server-Side PDF Generation</div>
             </div>
           </div>
 
@@ -126,10 +126,10 @@ export const ResumeModal = ({ isOpen, onClose }) => {
                 MERN Stack | Mental Wellness Platform | Live: rowl-ai-pink.vercel.app
               </div>
               <ul className="list-disc list-inside text-xs text-[#8b949e] space-y-1">
-                <li>Independently designed, built, and deployed a full-stack mental wellness application end-to-end in a 7-week production cycle.</li>
-                <li>Used an AI-assisted development pipeline (Claude) to plan and implement database schema modeling, backend routing logic, and component architecture.</li>
-                <li>Integrated the Groq Cloud Inference API to power Sera AI, a low-latency conversational wellness chatbot.</li>
-                <li>Implemented JWT and HTTP-only cookie authentication, integrated Razorpay payment webhooks, validated core flows across 10+ test sessions, and deployed to production on Vercel and Render.</li>
+                <li>Independently architected, built, and deployed a full-stack mental wellness application end-to-end in a 7-week production cycle.</li>
+                <li>Designed normalized MongoDB schemas, modular Express REST controllers, and strict JSON request/response validation contracts.</li>
+                <li>Integrated the Groq Cloud LPU API (~280ms latency) to power Sera AI with defensive non-clinical prompt guardrails.</li>
+                <li>Implemented JWT authentication in HTTP-only cookies and cryptographic SHA-256 HMAC Razorpay webhook verification, deployed on Vercel and Render.</li>
               </ul>
             </div>
 
@@ -137,19 +137,35 @@ export const ResumeModal = ({ isOpen, onClose }) => {
             <div className="space-y-1.5">
               <div className="flex items-baseline justify-between text-xs">
                 <span className="font-bold text-[#f0f6fc]">
-                  Faculty Appraisal Management System — Academic Project
+                  TCE Faculty Appraisal Management System — Institutional Platform
                 </span>
                 <span className="font-mono text-[#8b949e]">2026 – Present</span>
               </div>
               <div className="text-[11px] font-mono text-[#38bdf8]">
-                MERN Stack | Institutional Appraisal Platform | Live: tce-appraisal.vercel.app
+                Full-Stack Web & 4-Tier RBAC | 350+ Faculty Governed | Live: tce-apprisal.vercel.app
               </div>
               <ul className="list-disc list-inside text-xs text-[#8b949e] space-y-1">
-                <li>Building a web-based system to digitize and automate the institutional faculty appraisal lifecycle.</li>
-                <li>Implemented multi-role authentication workflows separating faculty submission from HOD evaluation.</li>
-                <li>Structured dynamic approval/rejection workflows to securely process appraisal requests.</li>
-                <li>Integrated PDF generation to produce downloadable appraisal reports and evaluation summaries.</li>
-                <li>Developed automated notifications to communicate appraisal outcomes and administrative decisions.</li>
+                <li>Architected an institutional platform digitizing the annual faculty appraisal lifecycle across a 9-section, 200-point accreditation rubric.</li>
+                <li>Enforced 4-tier Role-Based Access Control (Faculty → HoD → Registrar → Principal) with hardened JWT leadership endpoint guards.</li>
+                <li>Built server-side PDF dossier generation with digital verification seals and multi-year appraisal cycle tracking.</li>
+              </ul>
+            </div>
+
+            {/* FlowState Lo-Fi */}
+            <div className="space-y-1.5">
+              <div className="flex items-baseline justify-between text-xs">
+                <span className="font-bold text-[#f0f6fc]">
+                  FlowState Lo-Fi — Chrome Extension (Manifest V3) & Voice DSP
+                </span>
+                <span className="font-mono text-[#8b949e]">2026</span>
+              </div>
+              <div className="text-[11px] font-mono text-[#38bdf8]">
+                JavaScript (ES6+), Chrome MV3, Web Speech API, Levenshtein Classifier, MediaSession API
+              </div>
+              <ul className="list-disc list-inside text-xs text-[#8b949e] space-y-1">
+                <li>Engineered a Manifest V3 Chrome Extension for hands-free YouTube beat looping and voice-controlled timestamp seeking.</li>
+                <li>Implemented a sliding delta-cursor stream processor paired with a Phonetic Skeleton + Levenshtein Edit-Distance (d ≤ 1) fuzzy command matcher.</li>
+                <li>Built smart 20% audio auto-ducking on speech onset, Trusted-Types CSP-compliant DOM injection, and Bluetooth earbud MediaSession hooks.</li>
               </ul>
             </div>
 

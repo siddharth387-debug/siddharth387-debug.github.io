@@ -20,8 +20,8 @@ export const Navbar = ({ onOpenResume, onOpenCommandPalette }) => {
     { name: 'Work', href: isHomePage ? '#projects' : '/#projects' },
     { name: 'Architecture', href: isHomePage ? '#architecture' : '/#architecture' },
     { name: 'About', href: isHomePage ? '#about' : '/#about' },
-    { name: 'AI Workflow', href: isHomePage ? '#workflow' : '/#workflow' },
-    { name: 'Prompting', href: isHomePage ? '#prompting' : '/#prompting' },
+    { name: 'Engineering', href: isHomePage ? '#workflow' : '/#workflow' },
+    { name: 'LLM Architecture', href: isHomePage ? '#prompting' : '/#prompting' },
     { name: 'Contact', href: isHomePage ? '#contact' : '/#contact' },
   ];
 

@@ -70,10 +70,10 @@ export const AiWorkflow = () => {
               <ShieldCheck className="w-4 h-4" />
             </div>
             <span>
-              AI-generated output is treated as a starting point — I review, understand, test, and adapt it before integrating it into the application.
+              Every feature is verified against strict schema contracts, role-based access guards, and edge-case tests before shipping to production.
             </span>
           </div>
-          <span className="text-[#38bdf8] shrink-0 font-bold">Reviewed & Tested</span>
+          <span className="text-[#38bdf8] shrink-0 font-bold">Production Verified</span>
         </div>
 
 

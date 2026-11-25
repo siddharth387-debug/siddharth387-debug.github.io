@@ -24,19 +24,19 @@ export const AboutAndSkills = () => {
             <div className="pt-2 text-xs font-mono text-[#8b949e] space-y-1.5 border-l-2 border-[#222b38] pl-3">
               <div>Based in Tamil Nadu · <span className="text-[#38bdf8]">Remote</span> & <span className="text-[#f0f6fc]">Chennai / Anywhere</span></div>
               <div>MCA Candidate @ TCE Madurai (8.47 CGPA)</div>
-              <div>Full-Stack + AI-Assisted Web Development</div>
+              <div>Full-Stack Systems & Web Engineering</div>
             </div>
           </div>
 
           <div className="lg:col-span-8 space-y-4 text-base text-[#8b949e] leading-relaxed">
             <p className="text-lg text-[#f0f6fc] font-medium leading-relaxed">
-              I am a <span className="text-[#38bdf8]">full-stack web developer</span> exploring the intersection of web engineering, AI-assisted development, and LLM-powered applications.
+              I am a <span className="text-[#38bdf8]">Full-Stack Software Engineer</span> focused on building secure, production-ready web platforms, institutional governance systems, and browser extensions.
             </p>
             <p>
-              My foundation is built on practical web engineering: developing full-stack applications with the <strong>MERN stack</strong> (React, Node.js, Express, MongoDB) and <strong>PHP / MySQL</strong>. I have built real applications incorporating secure session and token authentication (JWT in HTTP-only cookies), role-based access control (RBAC), relational and document databases, and third-party integrations like Razorpay webhooks.
+              My core engineering work centers on the <strong>MERN stack</strong> (React 19, Node.js, Express, MongoDB) and <strong>PHP / MySQL</strong>. I architect end-to-end applications featuring JWT authentication in HTTP-only cookies, 4-tier role-based access control (RBAC), normalized 3NF relational schemas, cryptographic Razorpay HMAC-SHA256 webhooks, and Manifest V3 Chrome Extensions.
             </p>
             <p>
-              Rather than viewing AI as a replacement or gimmick, I actively apply <strong>Prompt Engineering</strong> and inference APIs (such as Groq Cloud) to build useful capabilities into web applications—such as conversational reflection workflows and automated evaluation synthesis.
+              Alongside core full-stack architecture, I integrate <strong>low-latency LLM inference APIs</strong> (such as Groq Cloud LPU at ~280ms) and custom <strong>Phonetic + Levenshtein DSP algorithms</strong> into production workflows with strict JSON schema validation and domain guardrails.
             </p>
           </div>
         </div>

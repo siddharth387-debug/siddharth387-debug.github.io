@@ -128,7 +128,7 @@ export const Contact = ({ onOpenResume }) => {
               Let's Build Something Useful.
             </h2>
             <p className="text-base text-[#8b949e]">
-              I am open to discuss full-stack engineering roles, software projects, and AI-assisted development pipelines. Send a direct message to my primary inbox below.
+              I am open to discuss Full-Stack Software Engineering roles, backend & frontend architecture, and production web systems. Send a direct message to my primary inbox below.
             </p>
           </div>
 

@@ -185,7 +185,7 @@ function isFuzzyCommandMatch(spoken, target = 'again') {
 
             {/* Subtle disclaimer / positioning */}
             <p className="text-xs text-[#8b949e]/80 font-mono pt-2">
-              * Grounded in full-stack engineering principles — using AI for orchestration, prompt architecture, and practical web integration.
+              * Grounded in systems engineering — 4-tier RBAC, HTTP-only JWT security, normalized 3NF schemas, and sub-300ms LLM inference.
             </p>
           </div>
 

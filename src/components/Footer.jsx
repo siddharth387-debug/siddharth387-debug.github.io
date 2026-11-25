@@ -17,7 +17,7 @@ export const Footer = () => {
           <Terminal className="w-4 h-4 text-[#38bdf8]" />
           <span>{portfolioData.personal.name}</span>
           <span className="text-[#38bdf8]">/</span>
-          <span>AI-Assisted Web Developer</span>
+          <span>Full-Stack Software Engineer</span>
         </div>
 
         <div className="flex items-center gap-6">
