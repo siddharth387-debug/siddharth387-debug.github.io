@@ -1,4 +1,4 @@
-# Siddharth K — AI-Assisted Web Developer Portfolio
+# Siddharth K — Web Developer Portfolio
 
 A dark-themed, product-grade developer portfolio tailored for deployment on **GitHub Pages** (`https://siddharth387-debug.github.io`).
 
