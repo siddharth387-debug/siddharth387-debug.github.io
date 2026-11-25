@@ -125,8 +125,13 @@ export const ResumeModal = ({ isOpen, onClose }) => {
                 </span>
                 <span className="font-mono text-[#8b949e]">2026 – Present</span>
               </div>
-              <div className="text-[11px] font-mono text-[#38bdf8]">
-                MERN Stack | Institutional Governance Platform | Live: tfpep.tceapps.in | GitHub Repository
+              <div className="text-[11px] font-mono text-[#38bdf8] flex flex-wrap items-center gap-1.5">
+                <span>MERN Stack | Institutional Governance Platform | Live:</span>
+                <a href="https://tfpep.tceapps.in/" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#7dd3fc]">tfpep.tceapps.in</a>
+                <span>|</span>
+                <a href="https://github.com/siddharth387-debug/Tce-apprisal" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#7dd3fc]">GitHub Repository</a>
+                <span>|</span>
+                <a href="https://www.loom.com/share/2c768659961f43c486b898fe0e4a0f28" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#7dd3fc] font-bold">Loom Demo</a>
               </div>
               <ul className="list-disc list-inside text-xs text-[#8b949e] space-y-1">
                 <li>Architected and deployed an institutional appraisal platform active across 16 academic departments, with 61 faculty members onboarded.</li>
@@ -145,8 +150,13 @@ export const ResumeModal = ({ isOpen, onClose }) => {
                 </span>
                 <span className="font-mono text-[#8b949e]">2026</span>
               </div>
-              <div className="text-[11px] font-mono text-[#38bdf8]">
-                MERN Stack | Mental Wellness &amp; Reflection Platform | Live: rowl-ai-pink.vercel.app | GitHub Repository
+              <div className="text-[11px] font-mono text-[#38bdf8] flex flex-wrap items-center gap-1.5">
+                <span>MERN Stack | Mental Wellness &amp; Reflection Platform | Live:</span>
+                <a href="https://rowl-ai-pink.vercel.app/" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#7dd3fc]">rowl-ai-pink.vercel.app</a>
+                <span>|</span>
+                <a href="https://github.com/siddharth387-debug/rowl-ai" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#7dd3fc]">GitHub Repository</a>
+                <span>|</span>
+                <a href="https://www.loom.com/share/3acb715328d84e7f90f9ac460a537dcd" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#7dd3fc] font-bold">Loom Demo</a>
               </div>
               <ul className="list-disc list-inside text-xs text-[#8b949e] space-y-1">
                 <li>Built and deployed a six-module full-stack web application featuring Sera, a conversational wellness companion powered by Llama 3.1/3.3 through the Groq Cloud Inference API (~280ms latency).</li>

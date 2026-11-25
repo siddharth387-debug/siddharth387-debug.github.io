@@ -757,6 +757,19 @@ export const ProjectCard = ({ project, isFeatured = false }) => {
             <Github className="w-3.5 h-3.5" />
             GitHub
           </a>
+
+          {project.loomUrl && (
+            <a
+              href={project.loomUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cursor="LOOM DEMO"
+              className="inline-flex items-center gap-1.5 text-xs font-mono text-[#38bdf8] hover:text-[#7dd3fc] px-3 py-1.5 rounded-md bg-sky-500/10 border border-sky-500/30 hover:border-[#38bdf8]/60 transition-colors cursor-pointer"
+            >
+              <Play className="w-3 h-3 fill-current" />
+              Loom Demo
+            </a>
+          )}
         </div>
 
         <Link

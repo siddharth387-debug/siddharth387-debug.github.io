@@ -44,6 +44,7 @@ export const portfolioData = {
       ],
       liveUrl: "https://rowl-ai-pink.vercel.app/",
       githubUrl: "https://github.com/siddharth387-debug/rowl-ai",
+      loomUrl: "https://www.loom.com/share/3acb715328d84e7f90f9ac460a537dcd",
       filterTags: ["all", "ai", "mern"],
       timeline: "7-Week Production Cycle (2026)",
       caseStudy: {
@@ -115,8 +116,9 @@ export const portfolioData = {
         "RBAC",
         "LLM API"
       ],
-      liveUrl: "https://tce-apprisal.vercel.app/",
+      liveUrl: "https://tfpep.tceapps.in/",
       githubUrl: "https://github.com/siddharth387-debug/Tce-apprisal",
+      loomUrl: "https://www.loom.com/share/2c768659961f43c486b898fe0e4a0f28",
       filterTags: ["all", "ai", "mern"],
       timeline: "2026 – Present (Active Institutional System)",
       caseStudy: {
